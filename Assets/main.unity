@@ -135,6 +135,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b718ac497e7d964da2f1fea334676c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  level:
+    _experience: 0
+    _level: 1
+    _multiplier: 100
   baseStats:
     aspectStats:
       movement_speed: 77

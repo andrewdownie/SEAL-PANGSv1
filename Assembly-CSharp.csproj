@@ -56,7 +56,7 @@
      <Compile Include="Assets\CombatStats.cs" />
      <Compile Include="Assets\Effect.cs" />
      <Compile Include="Assets\Effects.cs" />
-     <Compile Include="Assets\ISEA_Update.cs" />
+     <Compile Include="Assets\Level.cs" />
      <Compile Include="Assets\SEA.cs" />
      <Compile Include="Assets\SEA_Enums.cs" />
      <Compile Include="Assets\StatAttRatio.cs" />
