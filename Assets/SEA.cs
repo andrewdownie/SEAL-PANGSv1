@@ -3,12 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class SEA : MonoBehaviour {
-	[Header("Attributes")]
-	[SerializeField]
-	Attributes baseAttributes;
-	[SerializeField]
-	Attributes effectiveAttributes;
-
 	[Header("Stats")]
 	[SerializeField]
 	Stats baseStats;
@@ -20,12 +14,18 @@ public class SEA : MonoBehaviour {
 	[Header("Effects")]
 	[SerializeField]
 	Effects effects;
+
+	[Header("Attributes")]
+	[SerializeField]
+	Attributes baseAttributes;
+	[SerializeField]
+	Attributes effectiveAttributes;
 	
 
 	public void UpdateComponentChain(){
 		effectiveAttributes = baseAttributes + effects.CalculateAttributes(); 
 
-		attributedStats = baseStats.Clone(); //TODO: add stats * atts here
+		attributedStats = baseStats + StatAttRatio.AttributesToStats(effectiveAttributes);//TODO: add stats * atts here
 
 		effectiveStats = attributedStats.Clone(); //TODO: add stats from effects here
 	}
