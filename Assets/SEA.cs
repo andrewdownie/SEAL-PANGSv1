@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class SEA : MonoBehaviour {
-	[Header("Level")]
 	[SerializeField]
 	Level level;
 	[Header("Stats")]
@@ -11,6 +10,8 @@ public class SEA : MonoBehaviour {
 	Stats baseStats;
 	[SerializeField]
 	Stats attributedStats;
+	[SerializeField]
+	Stats multipliedStats;
 	[SerializeField]
 	Stats effectiveStats;
 
@@ -32,7 +33,10 @@ public class SEA : MonoBehaviour {
 
 		attributedStats = baseStats + StatAttRatio.AttributesToStats(effectiveAttributes);
 
-		effectiveStats = attributedStats.Clone(); //TODO: add stats from effects here
+		multipliedStats = attributedStats.MultiplyCombatStats(level.multiplierPercent);
+
+		effectiveStats = multipliedStats + effects.CalculateStats(multipliedStats);//TODO: should this use multiplied or attributed?
+
 	}
 
 	void OnValidate(){

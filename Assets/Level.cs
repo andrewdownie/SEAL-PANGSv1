@@ -9,7 +9,7 @@ public struct Level {
 	[SerializeField]
 	int _level;
 	[SerializeField]
-	float _multiplier;
+	float _multiplierPercent;
 
 
 	public int level{
@@ -23,25 +23,33 @@ public struct Level {
 		}
 	}
 
-	public float multiplier{
+	public float multiplierPercent{
 		get{
-			return _multiplier;
+			return _multiplierPercent;
 		}
 	}
 
 	public void AddExperience(int amount){
 		_experience += amount;
+		if(_experience < 1){
+			_experience = 1;
+		}
 		CalculateLevel();
 	}
 
 	public void CalculateLevel(){
 		_level = Mathf.FloorToInt(Mathf.Pow(_experience, 0.25f));
+		if(_level < 1){
+			_level = 1;
+		}
 		CalculateLevelMultiplier();
 	}
 
 	private void CalculateLevelMultiplier(){
-		double levelMultiplier = Mathf.Pow(_level, 3) / (2 * _level) + 99.5;
-		_multiplier = (float)levelMultiplier;
+		_multiplierPercent = (float)(Mathf.Pow(_level, 3) / (2 * _level) + 99.5) / 100;
+		if(_multiplierPercent < 1){
+			_multiplierPercent = 1;
+		}
 	}
 
 }

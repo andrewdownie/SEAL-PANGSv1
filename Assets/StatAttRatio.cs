@@ -17,6 +17,10 @@ public static class StatAttRatio {
 	// Setup the ratios between attributes and stats
 	//	
 		powerRatio[AttributeEnum.dexterity][CombatStatEnum.bleeding] = 5;
+
+
+
+		aspectRatio[AttributeEnum.agility][AspectEnum.movement_speed] = 1;
 	}
 
 	public static void SetupSingleton(){

@@ -136,19 +136,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level:
-    _experience: 0
+    _experience: 1
     _level: 1
-    _multiplier: 100
+    _multiplierPercent: 1
   baseStats:
     aspectStats:
-      movement_speed: 77
+      movement_speed: 40
       max_health: 9
       dodge: 0
     power:
       fire: 0
       ice: 0
       lightning: 0
-      bleeding: 0
+      bleeding: 10
       blunt: 0
       sharp: 0
       piercing: 0
@@ -164,14 +164,37 @@ MonoBehaviour:
       normal: 0
   attributedStats:
     aspectStats:
-      movement_speed: 77
+      movement_speed: 58
       max_health: 9
       dodge: 0
     power:
       fire: 0
       ice: 0
       lightning: 0
-      bleeding: 90
+      bleeding: 100
+      blunt: 0
+      sharp: 0
+      piercing: 0
+      normal: 0
+    resistance:
+      fire: 0
+      ice: 0
+      lightning: 0
+      bleeding: 0
+      blunt: 0
+      sharp: 0
+      piercing: 0
+      normal: 0
+  multipliedStats:
+    aspectStats:
+      movement_speed: 58
+      max_health: 9
+      dodge: 0
+    power:
+      fire: 0
+      ice: 0
+      lightning: 0
+      bleeding: 100
       blunt: 0
       sharp: 0
       piercing: 0
@@ -187,14 +210,14 @@ MonoBehaviour:
       normal: 0
   effectiveStats:
     aspectStats:
-      movement_speed: 77
+      movement_speed: 58
       max_health: 9
       dodge: 0
     power:
       fire: 0
       ice: 0
       lightning: 0
-      bleeding: 90
+      bleeding: 120
       blunt: 0
       sharp: 0
       piercing: 0
@@ -233,6 +256,29 @@ MonoBehaviour:
           sharp: 0
           piercing: 0
           normal: 0
+      percentStats:
+        aspectStats:
+          movement_speed: 0
+          max_health: 0
+          dodge: 0
+        power:
+          fire: 0
+          ice: 0
+          lightning: 0
+          bleeding: 20
+          blunt: 0
+          sharp: 0
+          piercing: 0
+          normal: 0
+        resistance:
+          fire: 0
+          ice: 0
+          lightning: 0
+          bleeding: 0
+          blunt: 0
+          sharp: 0
+          piercing: 0
+          normal: 0
       attributes:
         strength: 0
         agility: 0
@@ -254,14 +300,14 @@ MonoBehaviour:
     toggleEffects: []
   baseAttributes:
     strength: 20
-    agility: 0
+    agility: 18
     intelligence: 0
     endurance: 0
     constitution: 0
     dexterity: 18
   effectiveAttributes:
     strength: 20
-    agility: 0
+    agility: 18
     intelligence: 0
     endurance: 0
     constitution: 0

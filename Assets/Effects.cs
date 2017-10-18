@@ -51,4 +51,61 @@ public struct Effects {
 
 		return a;
 	}
+
+	public Stats CalculateStats(Stats precursorStats){
+        AspectStats aspect = new AspectStats();
+        CombatStats power = new CombatStats();
+        CombatStats resistance = new CombatStats();
+
+
+		foreach(AspectEnum ae in System.Enum.GetValues(typeof(AspectEnum))){
+			foreach(Effect e in activeEffects){
+				aspect[ae] += e.AspectValue(ae);
+				aspect[ae] += e.PercentAspectValue(ae) * precursorStats.AspectValue(ae) / 100;
+			}
+			foreach(Effect e in gearEffects){
+				aspect[ae] += e.AspectValue(ae);
+				aspect[ae] += e.PercentAspectValue(ae) * precursorStats.AspectValue(ae) / 100;
+			}
+			foreach(Effect e in instantEffects){
+				aspect[ae] += e.AspectValue(ae);
+				aspect[ae] += e.PercentAspectValue(ae) * precursorStats.AspectValue(ae) / 100;
+			}
+			foreach(Effect e in toggleEffects){
+				aspect[ae] += e.AspectValue(ae);
+				aspect[ae] += e.PercentAspectValue(ae) * precursorStats.AspectValue(ae) / 100;
+			}
+		}
+
+		foreach(CombatStatEnum cse in System.Enum.GetValues(typeof(CombatStatEnum))){
+			foreach(Effect e in activeEffects){
+				power[cse] += e.PowerValue(cse);
+				resistance[cse] += e.ResistanceValue(cse);
+				power[cse] += e.PercentPowerValue(cse) * precursorStats.PowerValue(cse) / 100;
+				resistance[cse] += e.ResistanceValue(cse) * precursorStats.ResistanceValue(cse) / 100;
+			}
+			foreach(Effect e in gearEffects){
+				power[cse] += e.PowerValue(cse);
+				resistance[cse] += e.ResistanceValue(cse);
+				power[cse] += e.PercentPowerValue(cse) * precursorStats.PowerValue(cse) / 100;
+				resistance[cse] += e.ResistanceValue(cse) * precursorStats.ResistanceValue(cse) / 100;
+			}
+			foreach(Effect e in instantEffects){
+				power[cse] += e.PowerValue(cse);
+				resistance[cse] += e.ResistanceValue(cse);
+				power[cse] += e.PercentPowerValue(cse) * precursorStats.PowerValue(cse) / 100;
+				resistance[cse] += e.ResistanceValue(cse) * precursorStats.ResistanceValue(cse) / 100;
+			}
+			foreach(Effect e in toggleEffects){
+				power[cse] += e.PowerValue(cse);
+				resistance[cse] += e.ResistanceValue(cse);
+				power[cse] += e.PercentPowerValue(cse) * precursorStats.PowerValue(cse) / 100;
+				resistance[cse] += e.ResistanceValue(cse) * precursorStats.ResistanceValue(cse) / 100;
+			}
+		}
+
+
+		return new Stats(aspect, power, resistance);
+	}
+
 }
