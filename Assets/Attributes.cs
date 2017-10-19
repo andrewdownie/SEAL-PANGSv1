@@ -11,6 +11,7 @@ This is my attempt to create a attributes data structure that combines the ease 
  */
 
 	[SerializeField]
+	[Range(0, 99)]
 	int strength,
 	agility,
 	intelligence,

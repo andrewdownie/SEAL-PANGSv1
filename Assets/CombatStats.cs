@@ -6,16 +6,21 @@ using UnityEngine;
 [System.Serializable]
 public struct CombatStats {
 	[SerializeField]
-	int fire,
+	[Range(0, 999)]
+	float fire,
 	ice,
 	lightning,
 	bleeding,
 	blunt,
 	sharp,
 	piercing,
-	normal;
+	normal,
+	stamina,
+	mana;
 
-	public CombatStats(int fire, int ice, int lightning, int bleeding, int blunt, int sharp, int piercing, int normal){
+	public CombatStats(float fire, float ice, float lightning, float bleeding,
+						float blunt, float sharp, float piercing, float normal,
+						float stamina, float mana){
 		this.fire = fire;
 		this.ice = ice;
 		this.lightning = lightning;
@@ -24,13 +29,16 @@ public struct CombatStats {
 		this.sharp = sharp;
 		this.piercing = piercing;
 		this.normal = normal;
+		this.stamina = stamina;
+		this.mana = mana;
 	}
 
 	public CombatStats Clone(){
-		return new CombatStats(fire, ice, lightning, bleeding, blunt, sharp, piercing, normal);
+		return new CombatStats(fire, ice, lightning, bleeding, blunt,
+								sharp, piercing, normal, stamina, mana);
 	}
 
-    public int this[CombatStatEnum cse]{
+    public float this[CombatStatEnum cse]{
 		get{
 			switch(cse){
 				case CombatStatEnum.fire:
@@ -49,6 +57,10 @@ public struct CombatStats {
 					return piercing;
 				case CombatStatEnum.normal:
 					return normal;
+				case CombatStatEnum.stamina:
+					return stamina;
+				case CombatStatEnum.mana:
+					return mana;
 			}
 			return 0;
 		}
@@ -79,7 +91,32 @@ public struct CombatStats {
 				case CombatStatEnum.normal:
 					normal = value;
 					break;
+				case CombatStatEnum.stamina:
+					stamina = value;
+					break;
+				case CombatStatEnum.mana:
+					mana = value;
+					break;
 			}
 		}
 	}
+
+
+	public static CombatStats operator *(float multiplier, CombatStats combatStats){
+		return Multiply(multiplier, combatStats);
+	}
+	public static CombatStats operator *(CombatStats combatStats, float multiplier){
+		return Multiply(multiplier, combatStats);
+	}
+
+	static CombatStats Multiply(float multiplier, CombatStats combatStats){
+		CombatStats result = new CombatStats();
+
+		foreach(CombatStatEnum cse in System.Enum.GetValues(typeof(CombatStatEnum))){
+			result[cse] = multiplier * combatStats[cse];
+		}
+
+		return result;
+	}
+
 }

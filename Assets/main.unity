@@ -136,9 +136,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level:
-    _experience: 1
+    _experience: 0
     _level: 1
     _multiplierPercent: 1
+  vitals:
+    health: 1000
+    stamina: 0
+    mana: 0
   baseStats:
     aspectStats:
       movement_speed: 40
@@ -153,6 +157,8 @@ MonoBehaviour:
       sharp: 0
       piercing: 0
       normal: 0
+      stamina: 0
+      mana: 0
     resistance:
       fire: 0
       ice: 0
@@ -162,6 +168,8 @@ MonoBehaviour:
       sharp: 0
       piercing: 0
       normal: 0
+      stamina: 0
+      mana: 0
   attributedStats:
     aspectStats:
       movement_speed: 58
@@ -176,6 +184,8 @@ MonoBehaviour:
       sharp: 0
       piercing: 0
       normal: 0
+      stamina: 0
+      mana: 0
     resistance:
       fire: 0
       ice: 0
@@ -185,6 +195,8 @@ MonoBehaviour:
       sharp: 0
       piercing: 0
       normal: 0
+      stamina: 0
+      mana: 0
   multipliedStats:
     aspectStats:
       movement_speed: 58
@@ -199,6 +211,8 @@ MonoBehaviour:
       sharp: 0
       piercing: 0
       normal: 0
+      stamina: 0
+      mana: 0
     resistance:
       fire: 0
       ice: 0
@@ -208,6 +222,8 @@ MonoBehaviour:
       sharp: 0
       piercing: 0
       normal: 0
+      stamina: 0
+      mana: 0
   effectiveStats:
     aspectStats:
       movement_speed: 58
@@ -217,11 +233,13 @@ MonoBehaviour:
       fire: 0
       ice: 0
       lightning: 0
-      bleeding: 120
+      bleeding: 100
       blunt: 0
       sharp: 0
       piercing: 0
       normal: 0
+      stamina: 0
+      mana: 0
     resistance:
       fire: 0
       ice: 0
@@ -231,8 +249,14 @@ MonoBehaviour:
       sharp: 0
       piercing: 0
       normal: 0
+      stamina: 0
+      mana: 0
   effects:
-    gearEffects:
+    characterBuffs: []
+    gearBuffs: []
+    gearCurses: []
+    activeBuffs: []
+    activeCurses:
     - stats:
         aspectStats:
           movement_speed: 0
@@ -247,6 +271,8 @@ MonoBehaviour:
           sharp: 0
           piercing: 0
           normal: 0
+          stamina: 0
+          mana: 0
         resistance:
           fire: 0
           ice: 0
@@ -256,6 +282,8 @@ MonoBehaviour:
           sharp: 0
           piercing: 0
           normal: 0
+          stamina: 0
+          mana: 0
       percentStats:
         aspectStats:
           movement_speed: 0
@@ -265,11 +293,13 @@ MonoBehaviour:
           fire: 0
           ice: 0
           lightning: 0
-          bleeding: 20
+          bleeding: 0
           blunt: 0
           sharp: 0
           piercing: 0
           normal: 0
+          stamina: 0
+          mana: 0
         resistance:
           fire: 0
           ice: 0
@@ -279,6 +309,8 @@ MonoBehaviour:
           sharp: 0
           piercing: 0
           normal: 0
+          stamina: 0
+          mana: 0
       attributes:
         strength: 0
         agility: 0
@@ -294,23 +326,30 @@ MonoBehaviour:
         blunt: 0
         sharp: 0
         piercing: 0
-        normal: 0
-    activeEffects: []
-    instantEffects: []
-    toggleEffects: []
+        normal: 10
+        stamina: 0
+        mana: 0
+      durationInSeconds: 5
+      damageRate: 2
+      timePassed: 0
+      ticksUntilNextDamage: 0
+    instantBuffs: []
+    instantCurses: []
+    toggleBuffs: []
+    toggleCurses: []
   baseAttributes:
-    strength: 20
+    strength: 4
     agility: 18
-    intelligence: 0
-    endurance: 0
-    constitution: 0
+    intelligence: 4
+    endurance: 4
+    constitution: 4
     dexterity: 18
   effectiveAttributes:
-    strength: 20
+    strength: 4
     agility: 18
-    intelligence: 0
-    endurance: 0
-    constitution: 0
+    intelligence: 4
+    endurance: 4
+    constitution: 4
     dexterity: 18
 --- !u!4 &629438129
 Transform:
@@ -491,10 +530,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34521e3051891d6419f4d4484d8ca550, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseAttributes:
-    strength: 62
-    agility: 0
-    intelligence: 0
-    endurance: 0
-    constitution: 0
-    dexterity: 0

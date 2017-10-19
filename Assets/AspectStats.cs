@@ -5,11 +5,12 @@ using UnityEngine;
 [System.Serializable]
 public struct AspectStats {
 	[SerializeField]
-	int movement_speed,
+	[Range(0, 999)]
+	float movement_speed,
 	max_health,
 	dodge;
 
-	public AspectStats(int movement_speed, int max_health, int dodge){
+	public AspectStats(float movement_speed, float max_health, float dodge){
 		this.movement_speed = movement_speed;
 		this.max_health = max_health;
 		this.dodge = dodge;
@@ -20,7 +21,7 @@ public struct AspectStats {
 	}
 
 
-	public int this[AspectEnum se]{
+	public float this[AspectEnum se]{
 		get{
 			switch(se){
 				case AspectEnum.movement_speed:

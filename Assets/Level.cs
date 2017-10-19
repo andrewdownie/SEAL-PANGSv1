@@ -5,19 +5,19 @@ using UnityEngine;
 [System.Serializable]
 public struct Level {
 	[SerializeField]
-	int _experience;
+	uint _experience;
 	[SerializeField]
-	int _level;
+	uint _level;
 	[SerializeField]
 	float _multiplierPercent;
 
 
-	public int level{
+	public uint level{
 		get{
 			return _level;
 		}
 	}
-	public int experience{
+	public uint experience{
 		get{
 			return _experience; 
 		}
@@ -29,7 +29,7 @@ public struct Level {
 		}
 	}
 
-	public void AddExperience(int amount){
+	public void AddExperience(uint amount){
 		_experience += amount;
 		if(_experience < 1){
 			_experience = 1;
@@ -38,7 +38,7 @@ public struct Level {
 	}
 
 	public void CalculateLevel(){
-		_level = Mathf.FloorToInt(Mathf.Pow(_experience, 0.25f));
+		_level = (uint)Mathf.FloorToInt(Mathf.Pow(_experience, 0.25f));
 		if(_level < 1){
 			_level = 1;
 		}

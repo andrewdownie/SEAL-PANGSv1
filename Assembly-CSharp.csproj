@@ -61,6 +61,7 @@
      <Compile Include="Assets\SEA_Enums.cs" />
      <Compile Include="Assets\StatAttRatio.cs" />
      <Compile Include="Assets\Stats.cs" />
+     <Compile Include="Assets\Vitals.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

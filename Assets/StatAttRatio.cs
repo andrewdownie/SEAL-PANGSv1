@@ -5,9 +5,9 @@ public static class StatAttRatio {
 // Variables ----------------------------------------------------------------------------
 //
 	static bool initialized = false;
-	static Dictionary<AttributeEnum, Dictionary<CombatStatEnum, int>> powerRatio;
-	static Dictionary<AttributeEnum, Dictionary<CombatStatEnum, int>> resistanceRatio;
-	static Dictionary<AttributeEnum, Dictionary<AspectEnum, int>> aspectRatio;
+	static Dictionary<AttributeEnum, Dictionary<CombatStatEnum, float>> powerRatio;
+	static Dictionary<AttributeEnum, Dictionary<CombatStatEnum, float>> resistanceRatio;
+	static Dictionary<AttributeEnum, Dictionary<AspectEnum, float>> aspectRatio;
 
 //
 // Setup --------------------------------------------------------------------------------
@@ -27,14 +27,14 @@ public static class StatAttRatio {
 	//
 	// Initialize the dict of dict's to hold zeros
 	//
-		powerRatio = new Dictionary<AttributeEnum, Dictionary<CombatStatEnum, int>>();
-		resistanceRatio = new Dictionary<AttributeEnum, Dictionary<CombatStatEnum, int>>();
-		aspectRatio = new Dictionary<AttributeEnum, Dictionary<AspectEnum, int>>();
+		powerRatio = new Dictionary<AttributeEnum, Dictionary<CombatStatEnum, float>>();
+		resistanceRatio = new Dictionary<AttributeEnum, Dictionary<CombatStatEnum, float>>();
+		aspectRatio = new Dictionary<AttributeEnum, Dictionary<AspectEnum, float>>();
 
 		foreach(AttributeEnum ae in System.Enum.GetValues(typeof(AttributeEnum))){
-			powerRatio.Add(ae, new Dictionary<CombatStatEnum, int>());
-			resistanceRatio.Add(ae, new Dictionary<CombatStatEnum, int>());
-			aspectRatio.Add(ae, new Dictionary<AspectEnum, int>());
+			powerRatio.Add(ae, new Dictionary<CombatStatEnum, float>());
+			resistanceRatio.Add(ae, new Dictionary<CombatStatEnum, float>());
+			aspectRatio.Add(ae, new Dictionary<AspectEnum, float>());
 
 			foreach(CombatStatEnum cse in System.Enum.GetValues(typeof(CombatStatEnum))){
 				powerRatio[ae].Add(cse, 0);

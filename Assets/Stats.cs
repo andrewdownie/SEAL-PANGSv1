@@ -10,15 +10,15 @@ public struct Stats {
     CombatStats power, resistance;
 
 
-    public int AspectValue(AspectEnum ae){
+    public float AspectValue(AspectEnum ae){
         return aspectStats[ae];
     }
 
-    public int PowerValue(CombatStatEnum combatStatEnum){
+    public float PowerValue(CombatStatEnum combatStatEnum){
         return power[combatStatEnum];
     }
 
-    public int ResistanceValue(CombatStatEnum combatStatEnum){
+    public float ResistanceValue(CombatStatEnum combatStatEnum){
         return resistance[combatStatEnum];
     }
 
@@ -55,8 +55,8 @@ public struct Stats {
         CombatStats power = new CombatStats();
 
         foreach(CombatStatEnum cse in System.Enum.GetValues(typeof(CombatStatEnum))){
-            power[cse] = Mathf.RoundToInt(this.power[cse] * multiplier);
-            resistance[cse] = Mathf.RoundToInt(this.resistance[cse] * multiplier);
+            power[cse] = this.power[cse] * multiplier;
+            resistance[cse] = this.resistance[cse] * multiplier;
         }
 
         return new Stats(aspectStats, power, resistance);
@@ -70,12 +70,12 @@ public struct Stats {
 
 
         foreach(AspectEnum ae in System.Enum.GetValues(typeof(AspectEnum))){
-            aspect[ae] = Mathf.RoundToInt(s.aspectStats[ae] * multiplier);
+            aspect[ae] = s.aspectStats[ae] * multiplier;
         }
 
         foreach(CombatStatEnum cse in System.Enum.GetValues(typeof(CombatStatEnum))){
-            power[cse] = Mathf.RoundToInt(s.power[cse] * multiplier);
-            resistance[cse] = Mathf.RoundToInt(s.resistance[cse] * multiplier);
+            power[cse] = s.power[cse] * multiplier;
+            resistance[cse] = s.resistance[cse] * multiplier;
         }
 
 

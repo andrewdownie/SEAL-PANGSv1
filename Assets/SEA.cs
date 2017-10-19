@@ -3,8 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class SEA : MonoBehaviour {
+
 	[SerializeField]
 	Level level;
+	[SerializeField]
+	Vitals vitals;
+
+
 	[Header("Stats")]
 	[SerializeField]
 	Stats baseStats;
@@ -15,9 +20,11 @@ public class SEA : MonoBehaviour {
 	[SerializeField]
 	Stats effectiveStats;
 
+
 	[Header("Effects")]
 	[SerializeField]
 	Effects effects;
+
 
 	[Header("Attributes")]
 	[SerializeField]
@@ -25,24 +32,47 @@ public class SEA : MonoBehaviour {
 	[SerializeField]
 	Attributes effectiveAttributes;
 	
+	public static float TICK_TIME{
+		get{
+			return 0.020f;
+		}
+	}
 
-	public void UpdateComponentChain(){
+	public void UpdateSEA(){
+		// update level
 		level.CalculateLevel();
 
+		// update attributes
 		effectiveAttributes = baseAttributes + effects.CalculateAttributes(); 
 
+		// update stats
 		attributedStats = baseStats + StatAttRatio.AttributesToStats(effectiveAttributes);
-
 		multipliedStats = attributedStats.MultiplyCombatStats(level.multiplierPercent);
-
-		effectiveStats = multipliedStats + effects.CalculateStats(multipliedStats);//TODO: should this use multiplied or attributed?
-
+		effectiveStats = multipliedStats + effects.CalculateStats(multipliedStats);
 	}
 
 	void OnValidate(){
-		Debug.Log("validation occured -- updating component chain");
+		Debug.Log("validation occured -- updating SEA");
+		UpdateSEA();
+	}
 
-		UpdateComponentChain();
+	void Start(){
+		InvokeRepeating("SEAUpdate", 0f, TICK_TIME);
+	}
+
+	void SEAUpdate()
+    {
+		Debug.Log("This is sea coroutine");
+		UpdateSEA();
+		ApplyEffectDamage();
+    }
+
+
+
+	void ApplyEffectDamage(){
+		CombatStats aggregatedDamage = effects.CalculateDamage();
+		vitals.ApplyDamage(effectiveStats, aggregatedDamage);
+
 	}
 
 }
