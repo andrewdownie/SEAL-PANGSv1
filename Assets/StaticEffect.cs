@@ -3,30 +3,23 @@
 [System.Serializable]
 public class StaticEffect : InstantEffect{
 	[SerializeField]
-	float durationInSeconds;
-	[SerializeField]
-	TickDamageRateEnum damageRate;
-
+	protected TickDamageRateEnum damageRate;
 
 	[SerializeField]
-	float timePassed;
-	[SerializeField]
-	int ticksUntilNextDamage;
+	protected int ticksUntilNextDamage;
 
 
-
-
-	float DamageRatio(){
+	protected float DamageRatio(float effectDuration){
 		/*
 		Calculates the ratio of how much damage should be done
 		per tick for damage over time (DOTs)
 		*/
-		float dmgRatio = 1 / ( ((float)damageRate) * durationInSeconds);
+		float dmgRatio = 1 / ( ((float)damageRate) * effectDuration);
 		Debug.Log("Ratio: " + dmgRatio);
 		return dmgRatio;
 	}
 	
-	int TicksUntilNextDamage(){
+	protected int TicksUntilNextDamage(){
 		int ticksUntilNextDamage = (int)(SEA.TICKS_PER_SECOND / ((float)damageRate));
 		Debug.Log("Ticks till damage: " + ticksUntilNextDamage);
 
@@ -34,31 +27,16 @@ public class StaticEffect : InstantEffect{
 	}
 
 
-
-
-    public CombatStats? DamageTick(){
-		timePassed += SEA.MS_PER_TICK;
+	public virtual CombatStats? DamageTick(){
 		ticksUntilNextDamage = ticksUntilNextDamage - 1;
 
-		//Debug.Log(timePassed);
-
-
-		if(timePassed >= durationInSeconds){
-			Debug.Log("marker 1");
-			return null;
-		}
-
 		if(ticksUntilNextDamage < 1){
-			Debug.Log("marker 2");
 			ticksUntilNextDamage = TicksUntilNextDamage();
-			CombatStats? resultDamage = base.damage * DamageRatio();
-			Debug.Log("Damage per tick: " + resultDamage.Value[CombatStatEnum.normal]);
+			CombatStats? resultDamage = base.damage * DamageRatio(1);
 			return resultDamage;
 		}
 
 		return new CombatStats();
 	}
-
-
 
 }
