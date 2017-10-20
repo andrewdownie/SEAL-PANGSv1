@@ -51,15 +51,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\ActiveEffect.cs" />
      <Compile Include="Assets\AspectStats.cs" />
      <Compile Include="Assets\Attributes.cs" />
      <Compile Include="Assets\CombatStats.cs" />
-     <Compile Include="Assets\Effect.cs" />
      <Compile Include="Assets\Effects.cs" />
+     <Compile Include="Assets\InstantEffect.cs" />
      <Compile Include="Assets\Level.cs" />
      <Compile Include="Assets\SEA.cs" />
      <Compile Include="Assets\SEA_Enums.cs" />
      <Compile Include="Assets\StatAttRatio.cs" />
+     <Compile Include="Assets\StaticEffect.cs" />
      <Compile Include="Assets\Stats.cs" />
      <Compile Include="Assets\Vitals.cs" />
  <Reference Include="UnityEngine.UI">

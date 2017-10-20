@@ -330,7 +330,7 @@ MonoBehaviour:
         stamina: 0
         mana: 0
       durationInSeconds: 10
-      damageRate: 10
+      damageRate: 2
       timePassed: 0
       ticksUntilNextDamage: 0
       timesDamageApplied: 0
