@@ -24,7 +24,8 @@ public struct Vitals {
 					mana -= CalculateResultingDamage(damageToApply[CombatStatEnum.mana], playerStats.ResistanceValue(CombatStatEnum.mana));
 					break;
 				default:
-					health -= CalculateResultingDamage(damageToApply[cs], playerStats.ResistanceValue(cs));
+					//health -= CalculateResultingDamage(damageToApply[cs], playerStats.ResistanceValue(cs));
+					health -= damageToApply[cs];
 					break;
 			}
 
@@ -33,6 +34,7 @@ public struct Vitals {
 	}
 
 
+	//TODO: this currenlty causes problems under certains mixtures of effect durations and ticks per attack
 	float CalculateResultingDamage(float damage, float resistance){
 		float damageDealt = Mathf.Sqrt( Mathf.Pow(damage, 2) - Mathf.Pow(resistance / 10, 2) );
 

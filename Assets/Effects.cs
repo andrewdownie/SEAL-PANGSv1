@@ -206,13 +206,13 @@ public struct Effects {
 
 
 
-	bool ApplyTickDamage(ref CombatStats damage, Effect e){
+	bool ApplyTickDamage(ref CombatStats damage, ref Effect e){
 		CombatStats? nullableTickDamage = e.DamageTick();
 		if(nullableTickDamage != null){
 			CombatStats tickDamage = nullableTickDamage.Value;
 
 			foreach(CombatStatEnum cse in System.Enum.GetValues(typeof(CombatStatEnum))){
-				damage[cse] = tickDamage[cse];
+				damage[cse] += tickDamage[cse];
 			}
 
 			return false;
@@ -225,13 +225,13 @@ public struct Effects {
 		CombatStats damage = new CombatStats();
 
 
+		/*
 		foreach(Effect e in gearCurses){
-			bool deleteItem = ApplyTickDamage(ref damage, e);
+			bool deleteItem = ApplyTickDamage(ref damage, ref e);
 			if(deleteItem){
 				//TODO: remove the item from the list
 			}
 		}
-
 		foreach(Effect e in activeCurses){
 			bool deleteItem = ApplyTickDamage(ref damage, e);
 			if(deleteItem){
@@ -252,6 +252,27 @@ public struct Effects {
 				//TODO: remove the item from the list
 			}
 		}
+		*/
+		for(int i = gearCurses.Count - 1; i >= 0; i--){
+			Effect e = gearCurses[i];
+			bool deleteItem = ApplyTickDamage(ref damage, ref e);
+			if(deleteItem){
+				//TODO: remove the item from the list
+			}
+			gearCurses[i] = e;
+
+		}
+
+		//TODO: put this into a method
+		for(int i = activeCurses.Count - 1; i >= 0; i--){
+			Effect e = activeCurses[i];
+			bool deleteItem = ApplyTickDamage(ref damage, ref e);
+			activeCurses[i] = e;
+			if(deleteItem){
+				activeCurses.RemoveAt(i);
+			}
+		}
+
 
 		//TODO: update the mana and stamina methods to handle the new tick damage procedure
 		/* 

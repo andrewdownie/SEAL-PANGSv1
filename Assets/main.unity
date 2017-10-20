@@ -329,10 +329,11 @@ MonoBehaviour:
         normal: 10
         stamina: 0
         mana: 0
-      durationInSeconds: 5
-      damageRate: 2
+      durationInSeconds: 10
+      damageRate: 5
       timePassed: 0
       ticksUntilNextDamage: 0
+      timesDamageApplied: 0
     instantBuffs: []
     instantCurses: []
     toggleBuffs: []

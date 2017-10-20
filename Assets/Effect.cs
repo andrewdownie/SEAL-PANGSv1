@@ -32,19 +32,23 @@ public struct Effect {
 		Calculates the ratio of how much damage should be done
 		per tick for damage over time (DOTs)
 		*/
-		return 1 / ( ((float)damageRate) * durationInSeconds);
+		float dmgRatio = 1 / ( ((float)damageRate) * durationInSeconds);
+		Debug.Log("Ratio: " + dmgRatio);
+		return dmgRatio;
 	}
 	
 	int TicksUntilNextDamage(){
-		int ticks = Mathf.CeilToInt((1000 / SEA.TICK_TIME) / ((float)damageRate));
-		Debug.Log("Calc ticks till next: " + ticks);
+		int ticksUntilNextDamage = (int)(SEA.TICKS_PER_SECOND / ((float)damageRate));
+		Debug.Log("Ticks till damage: " + ticksUntilNextDamage);
 
-		return ticks;
+		return ticksUntilNextDamage;
 	}
 
 
+	[SerializeField]
+	int timesDamageApplied;
 	public CombatStats? DamageTick(){
-		timePassed += SEA.TICK_TIME;
+		timePassed += SEA.MS_PER_TICK;
 		ticksUntilNextDamage = ticksUntilNextDamage - 1;
 
 		//Debug.Log(timePassed);
@@ -55,13 +59,12 @@ public struct Effect {
 			return null;
 		}
 
-		Debug.Log("Ticks till next pre: " + ticksUntilNextDamage);
 		if(ticksUntilNextDamage < 1){
 			Debug.Log("marker 2");
 			ticksUntilNextDamage = TicksUntilNextDamage();
-			Debug.Log("Ticks till next post: " + ticksUntilNextDamage);
-
+			timesDamageApplied++;
 			CombatStats? resultDamage = damage * DamageRatio();
+			Debug.Log("Damage per tick: " + resultDamage.Value[CombatStatEnum.normal]);
 			return resultDamage;
 		}
 

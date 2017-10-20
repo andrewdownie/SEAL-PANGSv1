@@ -32,9 +32,14 @@ public class SEA : MonoBehaviour {
 	[SerializeField]
 	Attributes effectiveAttributes;
 	
-	public static float TICK_TIME{
+	public static float MS_PER_TICK{
 		get{
-			return 0.020f;
+			return 1 / TICKS_PER_SECOND;
+		}
+	}
+	public static float TICKS_PER_SECOND{
+		get{
+			return 50;
 		}
 	}
 
@@ -57,7 +62,7 @@ public class SEA : MonoBehaviour {
 	}
 
 	void Start(){
-		InvokeRepeating("SEAUpdate", 0f, TICK_TIME);
+		InvokeRepeating("SEAUpdate", 0f, MS_PER_TICK);
 	}
 
 	void SEAUpdate()
