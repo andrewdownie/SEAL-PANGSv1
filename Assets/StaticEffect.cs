@@ -4,8 +4,6 @@
 public class StaticEffect : InstantEffect{
 	[SerializeField]
 	protected TickDamageRateEnum damageRate;
-
-	[SerializeField]
 	protected int ticksUntilNextDamage;
 
 

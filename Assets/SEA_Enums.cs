@@ -11,6 +11,8 @@
 public enum AspectEnum {
 	movement_speed,
 	max_health,
+	max_stamina,
+	max_mana,
 	dodge,
 	armour,
 }
@@ -26,9 +28,11 @@ public enum CombatStatEnum{
 	normal,
 	stamina,
 	mana,
+	healing,
 }
 
-public enum EffectEnum{
+public enum EffectTypeEnum{
+	character_buff,
 	gear_buff,
 	gear_curse,
 	active_buff,

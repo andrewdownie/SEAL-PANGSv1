@@ -11,6 +11,14 @@ public struct Vitals {
 	mana;
 
 
+	public void ApplyHealing(Stats playerStats, CombatStats healingToApply){
+		health += healingToApply[CombatStatEnum.healing];
+		stamina += healingToApply[CombatStatEnum.stamina];
+		mana += healingToApply[CombatStatEnum.mana];
+
+		Clamp(playerStats);
+	}
+
 
 
 	public void ApplyDamage(Stats playerStats, CombatStats damageToApply){
@@ -23,6 +31,9 @@ public struct Vitals {
 				case CombatStatEnum.mana:
 					mana -= CalculateResultingDamage(damageToApply[CombatStatEnum.mana], playerStats.ResistanceValue(CombatStatEnum.mana));
 					break;
+				case CombatStatEnum.healing:
+					// Healing stat does no damage
+					break;
 				default:
 					health -= CalculateResultingDamage(damageToApply[cs], playerStats.ResistanceValue(cs));
 					break;
@@ -30,10 +41,13 @@ public struct Vitals {
 
 		}
 		
+
+		Clamp(playerStats);
 	}
 
 
 	float CalculateResultingDamage(float damage, float resistance){
+		// aka. apply resistance
 		float damageDealt = Mathf.Sqrt( Mathf.Pow(damage, 2) - Mathf.Pow(resistance / 10, 2) );
 
 
@@ -43,6 +57,13 @@ public struct Vitals {
 
 
 		return damageDealt;
+	}
+
+
+	void Clamp(Stats playerStats){
+		health = Mathf.Clamp(health, 0, playerStats.AspectValue(AspectEnum.max_health));
+		stamina = Mathf.Clamp(stamina, 0, playerStats.AspectValue(AspectEnum.max_stamina));
+		mana = Mathf.Clamp(mana, 0, playerStats.AspectValue(AspectEnum.max_mana));
 	}
 
 }

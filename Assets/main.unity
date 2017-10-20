@@ -147,6 +147,8 @@ MonoBehaviour:
     aspectStats:
       movement_speed: 40
       max_health: 9
+      max_stamina: 0
+      max_mana: 0
       dodge: 0
     power:
       fire: 0
@@ -159,6 +161,7 @@ MonoBehaviour:
       normal: 0
       stamina: 0
       mana: 0
+      healing: 0
     resistance:
       fire: 0
       ice: 0
@@ -170,10 +173,13 @@ MonoBehaviour:
       normal: 0
       stamina: 0
       mana: 0
+      healing: 0
   attributedStats:
     aspectStats:
       movement_speed: 58
       max_health: 9
+      max_stamina: 0
+      max_mana: 0
       dodge: 0
     power:
       fire: 0
@@ -186,6 +192,7 @@ MonoBehaviour:
       normal: 0
       stamina: 0
       mana: 0
+      healing: 0
     resistance:
       fire: 0
       ice: 0
@@ -197,10 +204,13 @@ MonoBehaviour:
       normal: 0
       stamina: 0
       mana: 0
+      healing: 0
   multipliedStats:
     aspectStats:
       movement_speed: 58
       max_health: 9
+      max_stamina: 0
+      max_mana: 0
       dodge: 0
     power:
       fire: 0
@@ -213,6 +223,7 @@ MonoBehaviour:
       normal: 0
       stamina: 0
       mana: 0
+      healing: 0
     resistance:
       fire: 0
       ice: 0
@@ -224,10 +235,13 @@ MonoBehaviour:
       normal: 0
       stamina: 0
       mana: 0
+      healing: 0
   effectiveStats:
     aspectStats:
       movement_speed: 58
       max_health: 9
+      max_stamina: 0
+      max_mana: 0
       dodge: 0
     power:
       fire: 0
@@ -240,6 +254,7 @@ MonoBehaviour:
       normal: 0
       stamina: 0
       mana: 0
+      healing: 0
     resistance:
       fire: 0
       ice: 0
@@ -251,14 +266,16 @@ MonoBehaviour:
       normal: 0
       stamina: 0
       mana: 0
+      healing: 0
   effects:
     characterBuffs: []
-    gearBuffs: []
-    gearCurses:
+    gearBuffs:
     - stats:
         aspectStats:
           movement_speed: 0
           max_health: 0
+          max_stamina: 0
+          max_mana: 0
           dodge: 0
         power:
           fire: 0
@@ -271,6 +288,7 @@ MonoBehaviour:
           normal: 0
           stamina: 0
           mana: 0
+          healing: 0
         resistance:
           fire: 0
           ice: 0
@@ -282,10 +300,13 @@ MonoBehaviour:
           normal: 0
           stamina: 0
           mana: 0
+          healing: 0
       percentStats:
         aspectStats:
           movement_speed: 0
           max_health: 0
+          max_stamina: 0
+          max_mana: 0
           dodge: 0
         power:
           fire: 0
@@ -298,6 +319,7 @@ MonoBehaviour:
           normal: 0
           stamina: 0
           mana: 0
+          healing: 0
         resistance:
           fire: 0
           ice: 0
@@ -309,6 +331,7 @@ MonoBehaviour:
           normal: 0
           stamina: 0
           mana: 0
+          healing: 0
       attributes:
         strength: 0
         agility: 0
@@ -327,14 +350,17 @@ MonoBehaviour:
         normal: 0
         stamina: 0
         mana: 0
-      damageRate: 1
-      ticksUntilNextDamage: 0
+        healing: 0
+      damageRate: 0
+    gearCurses: []
     activeBuffs: []
     activeCurses:
     - stats:
         aspectStats:
           movement_speed: 0
           max_health: 0
+          max_stamina: 0
+          max_mana: 0
           dodge: 0
         power:
           fire: 0
@@ -347,6 +373,7 @@ MonoBehaviour:
           normal: 0
           stamina: 0
           mana: 0
+          healing: 0
         resistance:
           fire: 0
           ice: 0
@@ -358,10 +385,13 @@ MonoBehaviour:
           normal: 0
           stamina: 0
           mana: 0
+          healing: 0
       percentStats:
         aspectStats:
           movement_speed: 0
           max_health: 0
+          max_stamina: 0
+          max_mana: 0
           dodge: 0
         power:
           fire: 0
@@ -374,6 +404,7 @@ MonoBehaviour:
           normal: 0
           stamina: 0
           mana: 0
+          healing: 0
         resistance:
           fire: 0
           ice: 0
@@ -385,6 +416,7 @@ MonoBehaviour:
           normal: 0
           stamina: 0
           mana: 0
+          healing: 0
       attributes:
         strength: 0
         agility: 0
@@ -403,10 +435,9 @@ MonoBehaviour:
         normal: 10
         stamina: 0
         mana: 0
+        healing: 0
       damageRate: 2
-      ticksUntilNextDamage: 0
-      durationInSeconds: 10
-      timePassed: 0
+      durationInSeconds: 5
     instantBuffs: []
     instantCurses: []
     toggleBuffs: []

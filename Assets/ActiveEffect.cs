@@ -4,7 +4,6 @@
 public class ActiveEffect : StaticEffect{
 	[SerializeField]
 	protected float durationInSeconds;
-	[SerializeField]
 	protected float timePassed;
 
 

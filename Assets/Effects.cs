@@ -24,23 +24,36 @@ public struct Effects {
 	List<StaticEffect> toggleCurses;
 
 
-	public void AddEffect(ActiveEffect effect, EffectEnum effectType){
-		/*
+	public void AddEffect(ActiveEffect effect, EffectTypeEnum effectType){
 		switch(effectType){
-			case EffectEnum.active:
-				activeEffects.Add(effect);
+			case EffectTypeEnum.character_buff:
+				characterBuffs.Add(effect);
 				break;
-			case EffectEnum.gear:
-				gearEffects.Add(effect);
+			case EffectTypeEnum.active_buff:
+				activeBuffs.Add(effect);
 				break;
-			case EffectEnum.instant:
-				instantEffects.Add(effect);
+			case EffectTypeEnum.active_curse:
+				activeCurses.Add(effect);
 				break;
-			case EffectEnum.toggle:
-				toggleEffects.Add(effect);
+			case EffectTypeEnum.gear_buff:
+				gearBuffs.Add(effect);
+				break;
+			case EffectTypeEnum.gear_curse:
+				gearCurses.Add(effect);
+				break;
+			case EffectTypeEnum.instant_buff:
+				instantBuffs.Add(effect);
+				break;
+			case EffectTypeEnum.instant_curse:
+				instantCurses.Add(effect);
+				break;
+			case EffectTypeEnum.toggle_buff:
+				toggleBuffs.Add(effect);
+				break;
+			case EffectTypeEnum.toggle_curse:
+				toggleCurses.Add(effect);
 				break;
 		}
-		*/
 	}
 
 	public Attributes CalculateAttributes(){
@@ -205,8 +218,8 @@ public struct Effects {
 	}
 
 
-
-	bool ApplyTickDamage(ref CombatStats damage, ref ActiveEffect e){
+	// Static and Active effects apply their damage through ticks
+	bool ApplyDamageTick(ref CombatStats damage, ref StaticEffect e){
 		CombatStats? nullableTickDamage = e.DamageTick();
 		if(nullableTickDamage != null){
 			CombatStats tickDamage = nullableTickDamage.Value;
@@ -221,51 +234,50 @@ public struct Effects {
 		return true;
 	}
 
+
+	public CombatStats CalculateHealing(){
+		CombatStats healing = new CombatStats();
+
+
+
+		return healing;
+	}
+
 	public CombatStats CalculateDamage(){
 		CombatStats damage = new CombatStats();
 
-
-		/*
-		foreach(Effect e in gearCurses){
-			bool deleteItem = ApplyTickDamage(ref damage, ref e);
-			if(deleteItem){
-				//TODO: remove the item from the list
-			}
-		}
-		foreach(Effect e in activeCurses){
-			bool deleteItem = ApplyTickDamage(ref damage, e);
-			if(deleteItem){
-				//TODO: remove the item from the list
-			}
-		}
-		
-		foreach(Effect e in instantBuffs){
-			bool deleteItem = ApplyTickDamage(ref damage, e);
-			if(deleteItem){
-				//TODO: remove the item from the list
-			}
+		for(int i = gearCurses.Count - 1; i >= 0; i--){
+			StaticEffect e = gearCurses[i];
+			ApplyDamageTick(ref damage, ref e);
+			gearCurses[i] = e;
 		}
 
-		foreach(Effect e in toggleBuffs){
-			bool deleteItem = ApplyTickDamage(ref damage, e);
-			if(deleteItem){
-				//TODO: remove the item from the list
-			}
-		}
-		*/
-
-		//TODO: put this into a method
 		for(int i = activeCurses.Count - 1; i >= 0; i--){
-			ActiveEffect e = activeCurses[i];
-			bool deleteItem = ApplyTickDamage(ref damage, ref e);
-			activeCurses[i] = e;
+			StaticEffect e = (StaticEffect)activeCurses[i];
+			bool deleteItem = ApplyDamageTick(ref damage, ref e);
+			activeCurses[i] = (ActiveEffect)e;
 			if(deleteItem){
 				activeCurses.RemoveAt(i);
 			}
 		}
 
+		for(int i = instantCurses.Count - 1; i >= 0; i--){
+			InstantEffect e = instantCurses[i];
+			foreach(CombatStatEnum cse in System.Enum.GetValues(typeof(CombatStatEnum))){
+				damage[cse] += e.DamageValue(cse);
+			}
+			instantCurses.RemoveAt(i);
+		}
+
+		for(int i = toggleCurses.Count - 1; i >= 0; i--){
+			StaticEffect e = toggleCurses[i];
+			ApplyDamageTick(ref damage, ref e);
+			toggleCurses[i] = e;
+		}
+
 
 		//TODO: update the mana and stamina methods to handle the new tick damage procedure
+		//---------------------------------------------------------------------------------
 		/* 
 		foreach(Effect e in characterBuffs){
 			damage[CombatStatEnum.mana] -= e.DamageValue(CombatStatEnum.mana);

@@ -16,11 +16,12 @@ public struct CombatStats {
 	piercing,
 	normal,
 	stamina,
-	mana;
+	mana,
+	healing;
 
 	public CombatStats(float fire, float ice, float lightning, float bleeding,
 						float blunt, float sharp, float piercing, float normal,
-						float stamina, float mana){
+						float stamina, float mana, float healing){
 		this.fire = fire;
 		this.ice = ice;
 		this.lightning = lightning;
@@ -31,11 +32,12 @@ public struct CombatStats {
 		this.normal = normal;
 		this.stamina = stamina;
 		this.mana = mana;
+		this.healing = healing;
 	}
 
 	public CombatStats Clone(){
 		return new CombatStats(fire, ice, lightning, bleeding, blunt,
-								sharp, piercing, normal, stamina, mana);
+								sharp, piercing, normal, stamina, mana, healing);
 	}
 
     public float this[CombatStatEnum cse]{
@@ -61,6 +63,8 @@ public struct CombatStats {
 					return stamina;
 				case CombatStatEnum.mana:
 					return mana;
+				case CombatStatEnum.healing:
+					return healing;
 			}
 			return 0;
 		}
@@ -96,6 +100,9 @@ public struct CombatStats {
 					break;
 				case CombatStatEnum.mana:
 					mana = value;
+					break;
+				case CombatStatEnum.healing:
+					healing = value;
 					break;
 			}
 		}
