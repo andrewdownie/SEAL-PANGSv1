@@ -54,6 +54,8 @@ public class SEA : MonoBehaviour {
 		attributedStats = baseStats + StatAttRatio.AttributesToStats(effectiveAttributes);
 		multipliedStats = attributedStats.MultiplyCombatStats(level.multiplierPercent);
 		effectiveStats = multipliedStats + effects.CalculateStats(multipliedStats);
+
+		vitals.Clamp(effectiveStats);
 	}
 
 	void OnValidate(){

@@ -140,13 +140,13 @@ MonoBehaviour:
     _level: 1
     _multiplierPercent: 1
   vitals:
-    health: 1000
+    health: 255
     stamina: 0
     mana: 0
   baseStats:
     aspectStats:
       movement_speed: 40
-      max_health: 9
+      max_health: 255
       max_stamina: 0
       max_mana: 0
       dodge: 0
@@ -177,7 +177,7 @@ MonoBehaviour:
   attributedStats:
     aspectStats:
       movement_speed: 58
-      max_health: 9
+      max_health: 255
       max_stamina: 0
       max_mana: 0
       dodge: 0
@@ -208,7 +208,7 @@ MonoBehaviour:
   multipliedStats:
     aspectStats:
       movement_speed: 58
-      max_health: 9
+      max_health: 255
       max_stamina: 0
       max_mana: 0
       dodge: 0
@@ -239,7 +239,7 @@ MonoBehaviour:
   effectiveStats:
     aspectStats:
       movement_speed: 58
-      max_health: 9
+      max_health: 255
       max_stamina: 0
       max_mana: 0
       dodge: 0
@@ -269,89 +269,7 @@ MonoBehaviour:
       healing: 0
   effects:
     characterBuffs: []
-    gearBuffs:
-    - stats:
-        aspectStats:
-          movement_speed: 0
-          max_health: 0
-          max_stamina: 0
-          max_mana: 0
-          dodge: 0
-        power:
-          fire: 0
-          ice: 0
-          lightning: 0
-          bleeding: 0
-          blunt: 0
-          sharp: 0
-          piercing: 0
-          normal: 0
-          stamina: 0
-          mana: 0
-          healing: 0
-        resistance:
-          fire: 0
-          ice: 0
-          lightning: 0
-          bleeding: 0
-          blunt: 0
-          sharp: 0
-          piercing: 0
-          normal: 0
-          stamina: 0
-          mana: 0
-          healing: 0
-      percentStats:
-        aspectStats:
-          movement_speed: 0
-          max_health: 0
-          max_stamina: 0
-          max_mana: 0
-          dodge: 0
-        power:
-          fire: 0
-          ice: 0
-          lightning: 0
-          bleeding: 0
-          blunt: 0
-          sharp: 0
-          piercing: 0
-          normal: 0
-          stamina: 0
-          mana: 0
-          healing: 0
-        resistance:
-          fire: 0
-          ice: 0
-          lightning: 0
-          bleeding: 0
-          blunt: 0
-          sharp: 0
-          piercing: 0
-          normal: 0
-          stamina: 0
-          mana: 0
-          healing: 0
-      attributes:
-        strength: 0
-        agility: 0
-        intelligence: 0
-        endurance: 0
-        constitution: 0
-        dexterity: 0
-      damage:
-        fire: 0
-        ice: 0
-        lightning: 0
-        bleeding: 0
-        blunt: 0
-        sharp: 0
-        piercing: 0
-        normal: 0
-        stamina: 0
-        mana: 0
-        healing: 0
-      damageRate: 0
+    gearBuffs: []
     gearCurses: []
     activeBuffs: []
     activeCurses:
@@ -432,12 +350,13 @@ MonoBehaviour:
         blunt: 0
         sharp: 0
         piercing: 0
-        normal: 10
+        normal: 20
         stamina: 0
         mana: 0
         healing: 0
-      damageRate: 2
-      durationInSeconds: 5
+      activeTick:
+        damageRate: 1
+        durationInSeconds: 5
     instantBuffs: []
     instantCurses: []
     toggleBuffs: []

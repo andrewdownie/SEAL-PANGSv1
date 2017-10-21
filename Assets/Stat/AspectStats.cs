@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public struct AspectStats {
+public class AspectStats {
 	[SerializeField]
 	[Range(0, 999)]
 	float movement_speed,
@@ -11,6 +11,14 @@ public struct AspectStats {
 	max_stamina,
 	max_mana,
 	dodge;
+
+	public AspectStats(){
+		movement_speed = 0;
+		max_health = 0;
+		max_stamina = 0;
+		max_mana = 0;
+		dodge = 0;
+	}
 
 	public AspectStats(float movement_speed, float max_health, float max_stamina, float max_mana, float dodge){
 		this.movement_speed = movement_speed;

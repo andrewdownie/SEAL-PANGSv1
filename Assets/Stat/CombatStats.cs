@@ -4,7 +4,7 @@ using UnityEngine;
 
 
 [System.Serializable]
-public struct CombatStats {
+public class CombatStats : IMultipliable{
 	[SerializeField]
 	[Range(0, 999)]
 	float fire,
@@ -18,6 +18,21 @@ public struct CombatStats {
 	stamina,
 	mana,
 	healing;
+
+
+	public CombatStats(){
+		fire = 0;
+		ice = 0;
+		lightning = 0;
+		bleeding = 0;
+		blunt = 0;
+		sharp = 0;
+		piercing = 0;
+		normal = 0;
+		stamina = 0;
+		mana = 0;
+		healing = 0;
+	}
 
 	public CombatStats(float fire, float ice, float lightning, float bleeding,
 						float blunt, float sharp, float piercing, float normal,
@@ -110,13 +125,13 @@ public struct CombatStats {
 
 
 	public static CombatStats operator *(float multiplier, CombatStats combatStats){
-		return Multiply(multiplier, combatStats);
+		return _Multiply(multiplier, combatStats);
 	}
 	public static CombatStats operator *(CombatStats combatStats, float multiplier){
-		return Multiply(multiplier, combatStats);
+		return _Multiply(multiplier, combatStats);
 	}
 
-	static CombatStats Multiply(float multiplier, CombatStats combatStats){
+	static CombatStats _Multiply(float multiplier, CombatStats combatStats){
 		CombatStats result = new CombatStats();
 
 		foreach(CombatStatEnum cse in System.Enum.GetValues(typeof(CombatStatEnum))){
@@ -126,4 +141,8 @@ public struct CombatStats {
 		return result;
 	}
 
+    IMultipliable IMultipliable.Multiply(float constant)
+    {
+		return (IMultipliable)(_Multiply(constant, this));
+    }
 }

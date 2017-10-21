@@ -60,7 +60,7 @@ public struct Vitals {
 	}
 
 
-	void Clamp(Stats playerStats){
+	public void Clamp(Stats playerStats){
 		health = Mathf.Clamp(health, 0, playerStats.AspectValue(AspectEnum.max_health));
 		stamina = Mathf.Clamp(stamina, 0, playerStats.AspectValue(AspectEnum.max_stamina));
 		mana = Mathf.Clamp(mana, 0, playerStats.AspectValue(AspectEnum.max_mana));

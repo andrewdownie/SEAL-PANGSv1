@@ -51,18 +51,27 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\ActiveEffect.cs" />
-     <Compile Include="Assets\AspectStats.cs" />
      <Compile Include="Assets\Attributes.cs" />
-     <Compile Include="Assets\CombatStats.cs" />
+     <Compile Include="Assets\Effect\AbstractEffect.cs" />
+     <Compile Include="Assets\Effect\ActiveBuff.cs" />
+     <Compile Include="Assets\Effect\ActiveCurse.cs" />
+     <Compile Include="Assets\Effect\ActiveTick.cs" />
+     <Compile Include="Assets\Effect\InstantBuff.cs" />
+     <Compile Include="Assets\Effect\InstantCurse.cs" />
+     <Compile Include="Assets\Effect\StaticBuff.cs" />
+     <Compile Include="Assets\Effect\StaticCurse.cs" />
+     <Compile Include="Assets\Effect\StaticTick.cs" />
      <Compile Include="Assets\Effects.cs" />
-     <Compile Include="Assets\InstantEffect.cs" />
+     <Compile Include="Assets\IMultipliable.cs" />
      <Compile Include="Assets\Level.cs" />
      <Compile Include="Assets\SEA.cs" />
      <Compile Include="Assets\SEA_Enums.cs" />
-     <Compile Include="Assets\StatAttRatio.cs" />
-     <Compile Include="Assets\StaticEffect.cs" />
-     <Compile Include="Assets\Stats.cs" />
+     <Compile Include="Assets\SEA_Interfaces.cs" />
+     <Compile Include="Assets\Stat\Aid.cs" />
+     <Compile Include="Assets\Stat\AspectStats.cs" />
+     <Compile Include="Assets\Stat\CombatStats.cs" />
+     <Compile Include="Assets\Stat\StatAttRatio.cs" />
+     <Compile Include="Assets\Stat\Stats.cs" />
      <Compile Include="Assets\Vitals.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>

@@ -1,7 +1,10 @@
 ﻿using UnityEngine;
 
 [System.Serializable]
-public class InstantEffect {
+public abstract class AbstractEffect {
+	/*
+	The base effect type. Does no damage, and doesn't heal.
+	*/
 	[SerializeField]
 	protected Stats stats;
 	[SerializeField]
@@ -10,8 +13,6 @@ public class InstantEffect {
 	[SerializeField]
 	protected Attributes attributes;
 
-	[SerializeField]
-	protected CombatStats damage;
 
 	public int AttributeValue(AttributeEnum ae){
 		return attributes[ae];
@@ -27,10 +28,6 @@ public class InstantEffect {
 
 	public float ResistanceValue(CombatStatEnum combatStatEnum){
 		return stats.ResistanceValue(combatStatEnum);
-	}
-
-	public float DamageValue(CombatStatEnum cse){
-		return damage[cse];
 	}
 
 	public float PercentAspectValue(AspectEnum ae){

@@ -49,3 +49,14 @@ public enum TickDamageRateEnum{
 	fast_fiveTimesPerSecond = 5,
 	veryFast_tenTimesPerSecond = 10,
 }
+
+public enum AidEnum{
+	health,
+	stamina,
+	mana,
+}
+public enum EffectTickStatusEnum{
+	no_damage,
+	damage,
+	effect_over,
+}

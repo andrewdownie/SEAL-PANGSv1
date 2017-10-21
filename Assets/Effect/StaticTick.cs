@@ -1,7 +1,12 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
 [System.Serializable]
-public class StaticEffect : InstantEffect{
+public class StaticTick : ITick{
+	//Description: StaticTick's have their duration hard coded to 1, meaning they always 
+	//				apply effects at the damageRate, and run forever (unless an outside action removes them)
+
 	[SerializeField]
 	protected TickDamageRateEnum damageRate;
 	protected int ticksUntilNextDamage;
@@ -10,31 +15,33 @@ public class StaticEffect : InstantEffect{
 	protected float DamageRatio(float effectDuration){
 		/*
 		Calculates the ratio of how much damage should be done
-		per tick for damage over time (DOTs)
+		on a tick where damage is applied.
 		*/
 		float dmgRatio = 1 / ( ((float)damageRate) * effectDuration);
-		Debug.Log("Ratio: " + dmgRatio);
 		return dmgRatio;
 	}
 	
 	protected int TicksUntilNextDamage(){
+		/*
+		Calculates how many ticks before damage gets applied again.
+		*/
 		int ticksUntilNextDamage = (int)(SEA.TICKS_PER_SECOND / ((float)damageRate));
-		Debug.Log("Ticks till damage: " + ticksUntilNextDamage);
-
 		return ticksUntilNextDamage;
 	}
 
 
-	public virtual CombatStats? DamageTick(){
+	public virtual IMultipliable Tick(IMultipliable dataContainer){
 		ticksUntilNextDamage = ticksUntilNextDamage - 1;
 
 		if(ticksUntilNextDamage < 1){
 			ticksUntilNextDamage = TicksUntilNextDamage();
-			CombatStats? resultDamage = base.damage * DamageRatio(1);
-			return resultDamage;
+			IMultipliable result = dataContainer.Multiply(DamageRatio(1));
+			return result;
 		}
 
-		return new CombatStats();
+		return dataContainer.Multiply(0);
 	}
 
 }
+
+
