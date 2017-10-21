@@ -13,7 +13,7 @@ public class ActiveTick : StaticTick{
 
 
 	public override IMultipliable Tick(IMultipliable dataContainer){
-		timePassed += SEA.MS_PER_TICK;
+		timePassed += SEAL.MS_PER_TICK;
 		ticksUntilNextDamage = ticksUntilNextDamage - 1;
 
 		if(timePassed >= durationInSeconds){

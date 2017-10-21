@@ -5,7 +5,15 @@ using UnityEngine;
 [System.Serializable]
 public class StaticTick : ITick{
 	//Description: StaticTick's have their duration hard coded to 1, meaning they always 
-	//				apply effects at the damageRate, and run forever (unless an outside action removes them)
+	//				apply effects at the damageRate, and run forever 
+	//					(
+	//						StaticTicks run forever unless an outside action removes them:
+	//						for example armour (gear effect) and sprinting (toggle effect) are examples of
+	//						StaticTicks, as they don't have a known duration, and thus run at a constant
+	//						rate until removed by an outside action.
+	//						- maybe some armour heals the player at one health per second until they player takes the armour off,
+	//						- maybe sprinting drains 5 stamina per second from the player until they stop sprinting,
+	//					)
 
 	[SerializeField]
 	protected TickDamageRateEnum damageRate;
@@ -25,7 +33,7 @@ public class StaticTick : ITick{
 		/*
 		Calculates how many ticks before damage gets applied again.
 		*/
-		int ticksUntilNextDamage = (int)(SEA.TICKS_PER_SECOND / ((float)damageRate));
+		int ticksUntilNextDamage = (int)(SEAL.TICKS_PER_SECOND / ((float)damageRate));
 		return ticksUntilNextDamage;
 	}
 

@@ -51,28 +51,28 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Attributes.cs" />
-     <Compile Include="Assets\Effect\AbstractEffect.cs" />
-     <Compile Include="Assets\Effect\ActiveBuff.cs" />
-     <Compile Include="Assets\Effect\ActiveCurse.cs" />
-     <Compile Include="Assets\Effect\ActiveTick.cs" />
-     <Compile Include="Assets\Effect\InstantBuff.cs" />
-     <Compile Include="Assets\Effect\InstantCurse.cs" />
-     <Compile Include="Assets\Effect\StaticBuff.cs" />
-     <Compile Include="Assets\Effect\StaticCurse.cs" />
-     <Compile Include="Assets\Effect\StaticTick.cs" />
-     <Compile Include="Assets\Effects.cs" />
-     <Compile Include="Assets\IMultipliable.cs" />
-     <Compile Include="Assets\Level.cs" />
-     <Compile Include="Assets\SEA.cs" />
-     <Compile Include="Assets\SEA_Enums.cs" />
-     <Compile Include="Assets\SEA_Interfaces.cs" />
-     <Compile Include="Assets\Stat\Aid.cs" />
-     <Compile Include="Assets\Stat\AspectStats.cs" />
-     <Compile Include="Assets\Stat\CombatStats.cs" />
-     <Compile Include="Assets\Stat\StatAttRatio.cs" />
-     <Compile Include="Assets\Stat\Stats.cs" />
-     <Compile Include="Assets\Vitals.cs" />
+     <Compile Include="Assets\SEAL NDVR GASP\Attributes.cs" />
+     <Compile Include="Assets\SEAL NDVR GASP\Effect\AbstractEffect.cs" />
+     <Compile Include="Assets\SEAL NDVR GASP\Effect\ActiveBuff.cs" />
+     <Compile Include="Assets\SEAL NDVR GASP\Effect\ActiveCurse.cs" />
+     <Compile Include="Assets\SEAL NDVR GASP\Effect\InstantBuff.cs" />
+     <Compile Include="Assets\SEAL NDVR GASP\Effect\InstantCurse.cs" />
+     <Compile Include="Assets\SEAL NDVR GASP\Effect\StaticBuff.cs" />
+     <Compile Include="Assets\SEAL NDVR GASP\Effect\StaticCurse.cs" />
+     <Compile Include="Assets\SEAL NDVR GASP\Effects.cs" />
+     <Compile Include="Assets\SEAL NDVR GASP\IMultipliable.cs" />
+     <Compile Include="Assets\SEAL NDVR GASP\Level.cs" />
+     <Compile Include="Assets\SEAL NDVR GASP\SEAL.cs" />
+     <Compile Include="Assets\SEAL NDVR GASP\SEAL_Enums.cs" />
+     <Compile Include="Assets\SEAL NDVR GASP\SEAL_Interfaces.cs" />
+     <Compile Include="Assets\SEAL NDVR GASP\Stat\Aid.cs" />
+     <Compile Include="Assets\SEAL NDVR GASP\Stat\AspectStats.cs" />
+     <Compile Include="Assets\SEAL NDVR GASP\Stat\CombatStats.cs" />
+     <Compile Include="Assets\SEAL NDVR GASP\Stat\StatAttRatio.cs" />
+     <Compile Include="Assets\SEAL NDVR GASP\Stat\Stats.cs" />
+     <Compile Include="Assets\SEAL NDVR GASP\Tick\ActiveTick.cs" />
+     <Compile Include="Assets\SEAL NDVR GASP\Tick\StaticTick.cs" />
+     <Compile Include="Assets\SEAL NDVR GASP\Vitals.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

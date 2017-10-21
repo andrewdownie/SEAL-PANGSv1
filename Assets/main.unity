@@ -140,7 +140,7 @@ MonoBehaviour:
     _level: 1
     _multiplierPercent: 1
   vitals:
-    health: 255
+    health: 20
     stamina: 0
     mana: 0
   baseStats:
@@ -271,7 +271,79 @@ MonoBehaviour:
     characterBuffs: []
     gearBuffs: []
     gearCurses: []
-    activeBuffs: []
+    activeBuffs:
+    - stats:
+        aspectStats:
+          movement_speed: 0
+          max_health: 0
+          max_stamina: 0
+          max_mana: 0
+          dodge: 0
+        power:
+          fire: 0
+          ice: 0
+          lightning: 0
+          bleeding: 0
+          blunt: 0
+          sharp: 0
+          piercing: 0
+          normal: 0
+          stamina: 0
+          mana: 0
+          healing: 0
+        resistance:
+          fire: 0
+          ice: 0
+          lightning: 0
+          bleeding: 0
+          blunt: 0
+          sharp: 0
+          piercing: 0
+          normal: 0
+          stamina: 0
+          mana: 0
+          healing: 0
+      percentStats:
+        aspectStats:
+          movement_speed: 0
+          max_health: 0
+          max_stamina: 0
+          max_mana: 0
+          dodge: 0
+        power:
+          fire: 0
+          ice: 0
+          lightning: 0
+          bleeding: 0
+          blunt: 0
+          sharp: 0
+          piercing: 0
+          normal: 0
+          stamina: 0
+          mana: 0
+          healing: 0
+        resistance:
+          fire: 0
+          ice: 0
+          lightning: 0
+          bleeding: 0
+          blunt: 0
+          sharp: 0
+          piercing: 0
+          normal: 0
+          stamina: 0
+          mana: 0
+          healing: 0
+      attributes:
+        strength: 0
+        agility: 0
+        intelligence: 0
+        endurance: 0
+        constitution: 12
+        dexterity: 0
+      activeTick:
+        damageRate: 5
+        durationInSeconds: 10
     activeCurses:
     - stats:
         aspectStats:
@@ -350,12 +422,12 @@ MonoBehaviour:
         blunt: 0
         sharp: 0
         piercing: 0
-        normal: 20
+        normal: 5
         stamina: 0
         mana: 0
         healing: 0
       activeTick:
-        damageRate: 1
+        damageRate: 2
         durationInSeconds: 5
     instantBuffs: []
     instantCurses: []
@@ -373,7 +445,7 @@ MonoBehaviour:
     agility: 18
     intelligence: 4
     endurance: 4
-    constitution: 4
+    constitution: 16
     dexterity: 18
 --- !u!4 &629438129
 Transform:

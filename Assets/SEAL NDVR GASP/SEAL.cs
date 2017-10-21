@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SEA : MonoBehaviour {
+public class SEAL : MonoBehaviour {
 
 	[SerializeField]
 	Level level;
