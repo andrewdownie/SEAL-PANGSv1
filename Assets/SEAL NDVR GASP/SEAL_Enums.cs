@@ -44,7 +44,7 @@ public enum EffectTypeEnum{
 }
 
 public enum TickDamageRateEnum{
-	slow_oncePerSecond = 1,
+	slow_oncePerSecond = 0,
 	normal_twicePerSecond = 2,
 	fast_fiveTimesPerSecond = 5,
 	veryFast_tenTimesPerSecond = 10,

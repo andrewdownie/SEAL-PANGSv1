@@ -7,7 +7,7 @@ public class ActiveTick : StaticTick{
 	//Description: ActiveTick's have variable durations, meaning they apply at their damageRate for x seconds
 	//				after the duration is up, the effect should be destroyed
 	[SerializeField]
-	protected float durationInSeconds;
+	protected int durationInSeconds;
 	protected float timePassed;
 
 

@@ -6,7 +6,6 @@ using UnityEngine;
 [System.Serializable]
 public class CombatStats : IMultipliable{
 	[SerializeField]
-	[Range(0, 999)]
 	float fire,
 	ice,
 	lightning,
@@ -53,6 +52,18 @@ public class CombatStats : IMultipliable{
 	public CombatStats Clone(){
 		return new CombatStats(fire, ice, lightning, bleeding, blunt,
 								sharp, piercing, normal, stamina, mana, healing);
+	}
+
+	public void Clamp(){
+		foreach(CombatStatEnum cse in System.Enum.GetValues(typeof(CombatStatEnum))){
+
+			if(this[cse] > SEAL_Consts.MAX_COMBAT_STAT){
+				this[cse] = SEAL_Consts.MAX_COMBAT_STAT;
+			}
+			else if(this[cse] < SEAL_Consts.MIN_COMBAT_STAT){
+				this[cse] = SEAL_Consts.MIN_COMBAT_STAT;
+			}
+		}
 	}
 
     public float this[CombatStatEnum cse]{

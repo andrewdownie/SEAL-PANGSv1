@@ -97,10 +97,10 @@ public struct Effects {
 			AddAttribute(ae, ref a, instantBuffs);
 			AddAttribute(ae, ref a, toggleBuffs);
 
-			SubtractAttribute(ae, ref a, gearBuffs);
-			SubtractAttribute(ae, ref a, activeBuffs);
-			SubtractAttribute(ae, ref a, instantBuffs);
-			SubtractAttribute(ae, ref a, toggleBuffs);
+			SubtractAttribute(ae, ref a, gearCurses);
+			SubtractAttribute(ae, ref a, activeCurses);
+			SubtractAttribute(ae, ref a, instantCurses);
+			SubtractAttribute(ae, ref a, toggleCurses);
 		}
 
 		return a;

@@ -5,7 +5,6 @@ using UnityEngine;
 [System.Serializable]
 public class AspectStats {
 	[SerializeField]
-	[Range(0, 999)]
 	float movement_speed,
 	max_health,
 	max_stamina,
@@ -26,6 +25,17 @@ public class AspectStats {
 		this.max_stamina = max_stamina;
 		this.max_mana= max_mana;
 		this.dodge = dodge;
+	}
+
+	public void Clamp(){
+		foreach(AspectEnum ae in System.Enum.GetValues(typeof(AspectEnum))){
+			if(this[ae] < SEAL_Consts.MIN_ASPECT){
+				this[ae] = SEAL_Consts.MIN_ASPECT;
+			}
+			else if(this[ae] > SEAL_Consts.MAX_ASPECT){
+				this[ae] = SEAL_Consts.MAX_ASPECT;
+			}
+		}
 	}
 
 	public AspectStats Clone(){

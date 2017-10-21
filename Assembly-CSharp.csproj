@@ -63,6 +63,7 @@
      <Compile Include="Assets\SEAL NDVR GASP\IMultipliable.cs" />
      <Compile Include="Assets\SEAL NDVR GASP\Level.cs" />
      <Compile Include="Assets\SEAL NDVR GASP\SEAL.cs" />
+     <Compile Include="Assets\SEAL NDVR GASP\SEAL_Consts.cs" />
      <Compile Include="Assets\SEAL NDVR GASP\SEAL_Enums.cs" />
      <Compile Include="Assets\SEAL NDVR GASP\SEAL_Interfaces.cs" />
      <Compile Include="Assets\SEAL NDVR GASP\Stat\Aid.cs" />

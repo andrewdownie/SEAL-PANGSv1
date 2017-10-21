@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class Aid : IMultipliable{
+	[SerializeField]
 	float health, mana, stamina;
 
 	public float this[AidEnum ae]{

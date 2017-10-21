@@ -11,10 +11,10 @@ public struct Vitals {
 	mana;
 
 
-	public void ApplyHealing(Stats playerStats, CombatStats healingToApply){
-		health += healingToApply[CombatStatEnum.healing];
-		stamina += healingToApply[CombatStatEnum.stamina];
-		mana += healingToApply[CombatStatEnum.mana];
+	public void ApplyHealing(Stats playerStats, Aid healingToApply){
+		health += healingToApply[AidEnum.health];
+		stamina += healingToApply[AidEnum.stamina];
+		mana += healingToApply[AidEnum.mana];
 
 		Clamp(playerStats);
 	}
@@ -48,7 +48,13 @@ public struct Vitals {
 
 	float CalculateResultingDamage(float damage, float resistance){
 		// aka. apply resistance
-		float damageDealt = Mathf.Sqrt( Mathf.Pow(damage, 2) - Mathf.Pow(resistance / 10, 2) );
+		float dmgSqr = Mathf.Pow(damage, 2);
+		float resSqr = Mathf.Pow(resistance/10, 2);
+		float diff = dmgSqr - resSqr;
+		if(diff < 0){
+			diff = 0;
+		}
+		float damageDealt = Mathf.Sqrt(diff);
 
 
 		if(damageDealt < 0){

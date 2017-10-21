@@ -19,13 +19,24 @@ public class StaticTick : ITick{
 	protected TickDamageRateEnum damageRate;
 	protected int ticksUntilNextDamage;
 
+	protected float rate{
+		get{
+
+			float rate = (float)damageRate;
+			if(rate == 0){
+				rate = 1;
+			}
+			return rate;
+		}
+	}
+
 
 	protected float DamageRatio(float effectDuration){
 		/*
 		Calculates the ratio of how much damage should be done
 		on a tick where damage is applied.
 		*/
-		float dmgRatio = 1 / ( ((float)damageRate) * effectDuration);
+		float dmgRatio = 1 / (rate * effectDuration);
 		return dmgRatio;
 	}
 	
@@ -33,7 +44,8 @@ public class StaticTick : ITick{
 		/*
 		Calculates how many ticks before damage gets applied again.
 		*/
-		int ticksUntilNextDamage = (int)(SEAL.TICKS_PER_SECOND / ((float)damageRate));
+
+		int ticksUntilNextDamage = (int)(SEAL.TICKS_PER_SECOND / rate);
 		return ticksUntilNextDamage;
 	}
 

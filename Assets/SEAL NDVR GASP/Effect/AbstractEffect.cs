@@ -14,7 +14,7 @@ public abstract class AbstractEffect {
 	protected Attributes attributes;
 
 
-	public int AttributeValue(AttributeEnum ae){
+	public uint AttributeValue(AttributeEnum ae){
 		return attributes[ae];
 	}
 

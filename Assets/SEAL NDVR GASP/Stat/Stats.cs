@@ -10,6 +10,11 @@ public class Stats {
     CombatStats power, resistance;
 
 
+    public void Clamp(){
+        aspectStats.Clamp();
+        power.Clamp();
+        resistance.Clamp();
+    }
     public float AspectValue(AspectEnum ae){
         return aspectStats[ae];
     }

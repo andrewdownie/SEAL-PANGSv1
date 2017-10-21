@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 [System.Serializable]
 public struct Attributes {
@@ -11,26 +12,37 @@ This is my attempt to create a attributes data structure that combines the ease 
  */
 
 	[SerializeField]
-	[Range(0, 99)]
-	int strength,
+	uint strength,
 	agility,
-	intelligence,
+	uintelligence,
 	endurance,
 	constitution,
 	dexterity;
 
 
-	public Attributes(int strength, int agility, int intelligence, int endurance, int constitution, int dexterity){
+	public Attributes(uint strength, uint agility, uint uintelligence, uint endurance, uint constitution, uint dexterity){
 		this.strength = strength;
 		this.agility = agility;
-		this.intelligence = intelligence;
+		this.uintelligence = uintelligence;
 		this.endurance = endurance;
 		this.constitution = constitution;
 		this.dexterity = dexterity;
 	}
 
+
+	public void Clamp(){
+		foreach(AttributeEnum ae in System.Enum.GetValues(typeof(AttributeEnum))){
+			if(this[ae] < SEAL_Consts.MIN_ATTRIBUTE){
+				this[ae] = SEAL_Consts.MIN_ATTRIBUTE;
+			}
+			else if(this[ae] > SEAL_Consts.MAX_ATTRIBUTE){
+				this[ae] = SEAL_Consts.MAX_ATTRIBUTE;
+			}
+		}
+	}
+
 	public Attributes Clone(){
-		return new Attributes(strength, agility, intelligence, endurance, constitution, dexterity);
+		return new Attributes(strength, agility, uintelligence, endurance, constitution, dexterity);
 	}
 
 	public static Attributes operator +(Attributes a1, Attributes a2){
@@ -43,7 +55,7 @@ This is my attempt to create a attributes data structure that combines the ease 
 		return a;
 	}
 
-    public int this[AttributeEnum ae]{
+    public uint this[AttributeEnum ae]{
 
 		get{
 			switch(ae){
@@ -52,7 +64,7 @@ This is my attempt to create a attributes data structure that combines the ease 
 				case AttributeEnum.agility:
 					return agility;
 				case AttributeEnum.intelligence:
-					return intelligence;
+					return uintelligence;
 				case AttributeEnum.endurance:
 					return endurance;
 				case AttributeEnum.constitution:
@@ -73,7 +85,7 @@ This is my attempt to create a attributes data structure that combines the ease 
 					agility = value;
 					break;
 				case AttributeEnum.intelligence:
-					intelligence = value;
+					uintelligence = value;
 					break;
 				case AttributeEnum.endurance:
 					endurance = value;

@@ -49,32 +49,40 @@ public class SEAL : MonoBehaviour {
 
 		// update attributes
 		effectiveAttributes = baseAttributes + effects.CalculateAttributes(); 
+		effectiveAttributes.Clamp();
 
 		// update stats
 		attributedStats = baseStats + StatAttRatio.AttributesToStats(effectiveAttributes);
 		multipliedStats = attributedStats.MultiplyCombatStats(level.multiplierPercent);
 		effectiveStats = multipliedStats + effects.CalculateStats(multipliedStats);
+		effectiveStats.Clamp();
 
+		// update vitals
 		vitals.Clamp(effectiveStats);
 	}
 
 	void OnValidate(){
-		Debug.Log("validation occured -- updating SEA");
+		Debug.Log("validation occured -- updating SEAL");
 		UpdateSEA();
 	}
 
 	void Start(){
-		InvokeRepeating("SEAUpdate", 0f, MS_PER_TICK);
+		InvokeRepeating("SEAL_Update", 0f, MS_PER_TICK);
 	}
 
-	void SEAUpdate()
+	void SEAL_Update()
     {
-		Debug.Log("This is sea coroutine");
+		Debug.Log("This is 'SEAL_Update'");
 		UpdateSEA();
+		ApplyEffectHealing();
 		ApplyEffectDamage();
     }
 
 
+	void ApplyEffectHealing(){
+		Aid aggregatedAid = effects.CalculateHealing();
+		vitals.ApplyHealing(effectiveStats, aggregatedAid);
+	}
 
 	void ApplyEffectDamage(){
 		CombatStats aggregatedDamage = effects.CalculateDamage();
