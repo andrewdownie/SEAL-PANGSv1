@@ -2,9 +2,9 @@
 
 [System.Serializable]
 public abstract class AbstractEffect {
-	/*
-	The base effect type. Does no damage, and doesn't heal.
-	*/
+	[SerializeField]
+	public EffectSource effectSource;
+	
 	[SerializeField]
 	protected Stats stats;
 	[SerializeField]

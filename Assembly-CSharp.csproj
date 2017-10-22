@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{F640F81A-F57C-D0E0-DAC3-79DF0D537876}</ProjectGuid>
+    <ProjectGuid>{5BA5376E-09A8-73DB-596A-295E75910C1F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -55,6 +55,7 @@
      <Compile Include="Assets\SEAL PANGS\Effect\AbstractEffect.cs" />
      <Compile Include="Assets\SEAL PANGS\Effect\ActiveBuff.cs" />
      <Compile Include="Assets\SEAL PANGS\Effect\ActiveCurse.cs" />
+     <Compile Include="Assets\SEAL PANGS\Effect\EffectSource.cs" />
      <Compile Include="Assets\SEAL PANGS\Effect\InstantBuff.cs" />
      <Compile Include="Assets\SEAL PANGS\Effect\InstantCurse.cs" />
      <Compile Include="Assets\SEAL PANGS\Effect\StaticBuff.cs" />

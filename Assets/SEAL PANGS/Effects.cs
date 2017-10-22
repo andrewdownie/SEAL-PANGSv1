@@ -34,53 +34,53 @@ public struct Effects {
 	//
 	// Add only
 	//
-	public void AddActiveBuff(ActiveBuff item){
-		activeBuffs.Add(item);
+	public void AddActiveBuff(ActiveBuff effect){
+		activeBuffs.Add(effect);
 	}
-	public void AddActiveCurse(ActiveCurse item){
-		activeCurses.Add(item);
+	public void AddActiveCurse(ActiveCurse effect){
+		activeCurses.Add(effect);
 	}
-	public void AddInstantBuff(InstantBuff item){
-		instantBuffs.Add(item);
+	public void AddInstantBuff(InstantBuff effect){
+		instantBuffs.Add(effect);
 	}
-	public void AddInstantCurse(InstantCurse item){
-		instantCurses.Add(item);
+	public void AddInstantCurse(InstantCurse effect){
+		instantCurses.Add(effect);
 	}
 
 	//
 	// Add and Remove
 	//
-	public void AddGearBuff(StaticBuff item){
-		gearBuffs.Add(item);
+	public void AddGearBuff(StaticBuff effect){
+		gearBuffs.Add(effect);
 	}
-	public void RemoveGearBuff(StaticBuff item){
-		gearBuffs.Remove(item);
+	public void RemoveGearBuff(StaticBuff effect){
+		gearBuffs.Remove(effect);
 	}
-	public void AddGearCurse(StaticCurse item){
-		gearCurses.Add(item);
+	public void AddGearCurse(StaticCurse effect){
+		gearCurses.Add(effect);
 	}
-	public void RemoveGearCurse(StaticCurse item){
-		gearCurses.Remove(item);
+	public void RemoveGearCurse(StaticCurse effect){
+		gearCurses.Remove(effect);
 	}
 
 
-	public void AddCharacterBuff(StaticBuff item){
-		characterBuffs.Add(item);
+	public void AddCharacterBuff(StaticBuff effect){
+		characterBuffs.Add(effect);
 	}
-	public void RemoveCharacterBuff(StaticBuff item){
-		characterBuffs.Remove(item);
+	public void RemoveCharacterBuff(StaticBuff effect){
+		characterBuffs.Remove(effect);
 	}
-	public void AddToggleBuff(StaticBuff item){
-		toggleBuffs.Add(item);
+	public void AddToggleBuff(StaticBuff effect){
+		toggleBuffs.Add(effect);
 	}
-	public void RemoveToggleBuff(StaticBuff item){
-		toggleBuffs.Remove(item);
+	public void RemoveToggleBuff(StaticBuff effect){
+		toggleBuffs.Remove(effect);
 	}
-	public void AddToggleCurse(StaticCurse item){
-		toggleCurses.Add(item);
+	public void AddToggleCurse(StaticCurse effect){
+		toggleCurses.Add(effect);
 	}
-	public void RemoveToggleCurse(StaticCurse item){
-		toggleCurses.Remove(item);
+	public void RemoveToggleCurse(StaticCurse effect){
+		toggleCurses.Remove(effect);
 	}
 
 
@@ -106,21 +106,47 @@ public struct Effects {
 		return a;
 	}
 
+	List<T> ResolvedStack<T>(List<T> list) where T : AbstractEffect{
+		Dictionary<EffectSource, List<T>> resolve = new Dictionary<EffectSource, List<T>>();
+
+		foreach(T t in list){
+			EffectSource es = t.effectSource;
+			if(resolve.ContainsKey(es) == false){
+				resolve.Add(es, new List<T>());
+			}
+			resolve[es].Add(t);
+		}
+
+
+		List<T> output = new List<T>();
+		foreach(List<T> tList in resolve.Values){
+			foreach(T t in tList){
+				
+			}
+		}
+		return output;
+	}
+
 	public Stats CalculateStats(Stats precursorStats){
         AspectStats aspect = new AspectStats();
         CombatStats power = new CombatStats();
         CombatStats resistance = new CombatStats();
 
 
+		//TODO: recalculate active lists into stackResolved lists
+		List<ActiveBuff> stackResolvedActiveBuffs = ResolvedStack(activeBuffs);
+		List<ActiveCurse> stackResolvedActiveCurses = ResolvedStack(activeCurses);
+
+
 		foreach(AspectStatEnum ae in System.Enum.GetValues(typeof(AspectStatEnum))){
 			AddAspect(ae, precursorStats, characterBuffs, ref aspect);
 			AddAspect(ae, precursorStats, gearBuffs, ref aspect);
-			AddAspect(ae, precursorStats, activeBuffs, ref aspect);
+			AddAspect(ae, precursorStats, stackResolvedActiveBuffs, ref aspect);
 			AddAspect(ae, precursorStats, instantBuffs, ref aspect);
 			AddAspect(ae, precursorStats, toggleBuffs, ref aspect);
 
 			SubtractAspect(ae, precursorStats, gearCurses, ref aspect);
-			SubtractAspect(ae, precursorStats, activeCurses, ref aspect);
+			SubtractAspect(ae, precursorStats, stackResolvedActiveCurses, ref aspect);
 			SubtractAspect(ae, precursorStats, instantCurses, ref aspect);
 			SubtractAspect(ae, precursorStats, toggleCurses, ref aspect);
 
@@ -132,12 +158,12 @@ public struct Effects {
 			AddPowerResistance(cse, precursorStats, ref power, ref resistance, characterBuffs);
 
 			AddPowerResistance(cse, precursorStats, ref power, ref resistance, gearBuffs);
-			AddPowerResistance(cse, precursorStats, ref power, ref resistance, activeBuffs);
+			AddPowerResistance(cse, precursorStats, ref power, ref resistance, stackResolvedActiveBuffs);
 			AddPowerResistance(cse, precursorStats, ref power, ref resistance, instantBuffs);
 			AddPowerResistance(cse, precursorStats, ref power, ref resistance, toggleBuffs);
 
 			SubtractPowerResistance(cse, precursorStats, ref power, ref resistance, gearCurses);
-			SubtractPowerResistance(cse, precursorStats, ref power, ref resistance, activeCurses);
+			SubtractPowerResistance(cse, precursorStats, ref power, ref resistance, stackResolvedActiveCurses);
 			SubtractPowerResistance(cse, precursorStats, ref power, ref resistance, instantCurses);
 			SubtractPowerResistance(cse, precursorStats, ref power, ref resistance, toggleCurses);
 		}

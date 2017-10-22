@@ -57,8 +57,3 @@ public enum VitalsEnum{
 	stamina,
 	mana,
 }
-public enum EffectTickStatusEnum{
-	no_damage,
-	damage,
-	effect_over,
-}
