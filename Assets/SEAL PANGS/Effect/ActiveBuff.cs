@@ -10,4 +10,15 @@ public class ActiveBuff : InstantBuff, IAidTick{
     {
 		  return (Aid)activeTick.Tick(aid);
     }
+    public ActiveBuff CloneWithoutStats(){
+        return new ActiveBuff(activeTick, aid);
+    }
+
+    public ActiveBuff(ActiveTick tick, Aid aid){
+        stats = new Stats();
+        percentStats = new Stats();
+        attributes = new Attributes();
+        activeTick = tick;
+        base.aid = aid;
+    }
 }

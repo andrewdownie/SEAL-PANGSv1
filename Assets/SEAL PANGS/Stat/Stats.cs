@@ -27,6 +27,13 @@ public class Stats {
         return resistance[combatStatEnum];
     }
 
+
+    public Stats(){
+        aspectStats = new AspectStats();
+        power = new CombatStats();
+        resistance = new CombatStats();
+    }
+
     public Stats(AspectStats aspectStats, CombatStats power, CombatStats resistance){
         this.aspectStats = aspectStats;
         this.power = power;

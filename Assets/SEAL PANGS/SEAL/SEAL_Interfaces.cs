@@ -9,3 +9,7 @@ public interface IDamageTick{
 public interface IAidTick{
 	Aid AidTick();
 }
+
+public interface IStackResolve<T>{
+	T DropStats();
+}

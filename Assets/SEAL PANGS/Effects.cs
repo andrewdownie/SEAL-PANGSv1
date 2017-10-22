@@ -106,22 +106,47 @@ public struct Effects {
 		return a;
 	}
 
-	List<T> ResolvedStack<T>(List<T> list) where T : AbstractEffect{
-		Dictionary<EffectSource, List<T>> resolve = new Dictionary<EffectSource, List<T>>();
+	List<ActiveBuff> ResolvedBuffStack(List<ActiveBuff> list) {
+		Dictionary<EffectSource, List<ActiveBuff>> resolve = new Dictionary<EffectSource, List<ActiveBuff>>();
 
-		foreach(T t in list){
-			EffectSource es = t.effectSource;
+		foreach(ActiveBuff ab in list){
+			EffectSource es = ab.effectSource;
 			if(resolve.ContainsKey(es) == false){
-				resolve.Add(es, new List<T>());
+				resolve.Add(es, new List<ActiveBuff>());
 			}
-			resolve[es].Add(t);
+			resolve[es].Add(ab);
 		}
 
 
-		List<T> output = new List<T>();
-		foreach(List<T> tList in resolve.Values){
-			foreach(T t in tList){
-				
+		List<ActiveBuff> output = new List<ActiveBuff>();
+		foreach(List<ActiveBuff> tList in resolve.Values){
+			//Add the first element with damage AND stats
+			output.Add(tList[0]);
+			for(int i = 1; i < tList.Count; i++){
+				output.Add(tList[i].CloneWithoutStats());
+			}
+		}
+		return output;
+	}
+
+	List<ActiveCurse> ResolvedCurseStack(List<ActiveCurse> list){
+		Dictionary<EffectSource, List<ActiveCurse>> resolve = new Dictionary<EffectSource, List<ActiveCurse>>();
+
+		foreach(ActiveCurse ab in list){
+			EffectSource es = ab.effectSource;
+			if(resolve.ContainsKey(es) == false){
+				resolve.Add(es, new List<ActiveCurse>());
+			}
+			resolve[es].Add(ab);
+		}
+
+
+		List<ActiveCurse> output = new List<ActiveCurse>();
+		foreach(List<ActiveCurse> tList in resolve.Values){
+			//Add the first element with damage AND stats
+			output.Add(tList[0]);
+			for(int i = 1; i < tList.Count; i++){
+				output.Add(tList[i].CloneWithoutStats());
 			}
 		}
 		return output;
@@ -134,8 +159,8 @@ public struct Effects {
 
 
 		//TODO: recalculate active lists into stackResolved lists
-		List<ActiveBuff> stackResolvedActiveBuffs = ResolvedStack(activeBuffs);
-		List<ActiveCurse> stackResolvedActiveCurses = ResolvedStack(activeCurses);
+		List<ActiveBuff> stackResolvedActiveBuffs = ResolvedBuffStack(activeBuffs);
+		List<ActiveCurse> stackResolvedActiveCurses = ResolvedCurseStack(activeCurses);
 
 
 		foreach(AspectStatEnum ae in System.Enum.GetValues(typeof(AspectStatEnum))){

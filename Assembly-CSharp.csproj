@@ -63,10 +63,10 @@
      <Compile Include="Assets\SEAL PANGS\Effects.cs" />
      <Compile Include="Assets\SEAL PANGS\IMultipliable.cs" />
      <Compile Include="Assets\SEAL PANGS\Level.cs" />
-     <Compile Include="Assets\SEAL PANGS\SEAL.cs" />
-     <Compile Include="Assets\SEAL PANGS\SEAL_Consts.cs" />
-     <Compile Include="Assets\SEAL PANGS\SEAL_Enums.cs" />
-     <Compile Include="Assets\SEAL PANGS\SEAL_Interfaces.cs" />
+     <Compile Include="Assets\SEAL PANGS\SEAL\SEAL.cs" />
+     <Compile Include="Assets\SEAL PANGS\SEAL\SEAL_Consts.cs" />
+     <Compile Include="Assets\SEAL PANGS\SEAL\SEAL_Enums.cs" />
+     <Compile Include="Assets\SEAL PANGS\SEAL\SEAL_Interfaces.cs" />
      <Compile Include="Assets\SEAL PANGS\Stat\Aid.cs" />
      <Compile Include="Assets\SEAL PANGS\Stat\AspectStats.cs" />
      <Compile Include="Assets\SEAL PANGS\Stat\CombatStats.cs" />
