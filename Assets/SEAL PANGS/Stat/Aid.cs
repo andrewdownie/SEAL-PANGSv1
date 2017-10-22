@@ -7,14 +7,14 @@ public class Aid : IMultipliable{
 	[SerializeField]
 	float health, mana, stamina;
 
-	public float this[AidEnum ae]{
+	public float this[VitalsEnum ae]{
 		get{
 			switch(ae){
-				case AidEnum.health:
+				case VitalsEnum.health:
 					return health;
-				case AidEnum.stamina:
+				case VitalsEnum.stamina:
 					return stamina;
-				case AidEnum.mana:
+				case VitalsEnum.mana:
 					return mana;
 			}
 
@@ -22,13 +22,13 @@ public class Aid : IMultipliable{
 		}
 		set{
 			switch(ae){
-				case AidEnum.health:
+				case VitalsEnum.health:
 					health = value;
 					break;
-				case AidEnum.stamina:
+				case VitalsEnum.stamina:
 					stamina = value;
 					break;
-				case AidEnum.mana:
+				case VitalsEnum.mana:
 					mana = value;
 					break;
 			}
@@ -45,7 +45,7 @@ public class Aid : IMultipliable{
 	static Aid _Multiply(float multiplier, Aid aid){
 		Aid result = new Aid();
 
-		foreach(AidEnum ae in System.Enum.GetValues(typeof(AidEnum))){
+		foreach(VitalsEnum ae in System.Enum.GetValues(typeof(VitalsEnum))){
 			result[ae] = multiplier * aid[ae];
 		}
 

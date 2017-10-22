@@ -112,7 +112,7 @@ public struct Effects {
         CombatStats resistance = new CombatStats();
 
 
-		foreach(AspectEnum ae in System.Enum.GetValues(typeof(AspectEnum))){
+		foreach(AspectStatEnum ae in System.Enum.GetValues(typeof(AspectStatEnum))){
 			AddAspect(ae, precursorStats, characterBuffs, ref aspect);
 			AddAspect(ae, precursorStats, gearBuffs, ref aspect);
 			AddAspect(ae, precursorStats, activeBuffs, ref aspect);
@@ -175,13 +175,13 @@ public struct Effects {
 	//=====		Private Helper Methods ----------------------------------------
 	//=====
 	//=====
-	void AddAspect<T>(AspectEnum ae, Stats precursorStats, List<T> effectList, ref AspectStats aspect) where T : AbstractEffect{
+	void AddAspect<T>(AspectStatEnum ae, Stats precursorStats, List<T> effectList, ref AspectStats aspect) where T : AbstractEffect{
 			foreach(AbstractEffect e in effectList){
 				aspect[ae] += e.AspectValue(ae);
 				aspect[ae] += e.PercentAspectValue(ae) * precursorStats.AspectValue(ae) / 100;
 			}
 	}
-	void SubtractAspect<T>(AspectEnum ae, Stats precursorStats, List<T> effectList, ref AspectStats aspect) where T : AbstractEffect{
+	void SubtractAspect<T>(AspectStatEnum ae, Stats precursorStats, List<T> effectList, ref AspectStats aspect) where T : AbstractEffect{
 			foreach(AbstractEffect e in effectList){
 				aspect[ae] += e.AspectValue(ae);
 				aspect[ae] += e.PercentAspectValue(ae) * precursorStats.AspectValue(ae) / 100;
@@ -224,7 +224,7 @@ public struct Effects {
 			Aid aid = idt.AidTick();
 			if(aid != null){
 
-				foreach(AidEnum ae in System.Enum.GetValues(typeof(AidEnum))){
+				foreach(VitalsEnum ae in System.Enum.GetValues(typeof(VitalsEnum))){
 					healing[ae] += aid[ae];
 				}
 			}
@@ -238,7 +238,7 @@ public struct Effects {
 	void ApplyBuff_InstantAid(ref Aid healing){
 		for(int i = instantBuffs.Count - 1; i >= 0; i--){
 			InstantBuff ib = instantBuffs[i];
-			foreach(AidEnum ae in System.Enum.GetValues(typeof(AidEnum))){
+			foreach(VitalsEnum ae in System.Enum.GetValues(typeof(VitalsEnum))){
 				healing[ae] += ib.AidValue(ae);
 			}
 			

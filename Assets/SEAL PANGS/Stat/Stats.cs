@@ -15,7 +15,7 @@ public class Stats {
         power.Clamp();
         resistance.Clamp();
     }
-    public float AspectValue(AspectEnum ae){
+    public float AspectValue(AspectStatEnum ae){
         return aspectStats[ae];
     }
 
@@ -43,7 +43,7 @@ public class Stats {
         CombatStats resistance = new CombatStats();
 
 
-        foreach(AspectEnum ae in System.Enum.GetValues(typeof(AspectEnum))){
+        foreach(AspectStatEnum ae in System.Enum.GetValues(typeof(AspectStatEnum))){
             aspect[ae] = s1.aspectStats[ae] + s2.aspectStats[ae];
         }
 
@@ -74,7 +74,7 @@ public class Stats {
         CombatStats resistance = new CombatStats();
 
 
-        foreach(AspectEnum ae in System.Enum.GetValues(typeof(AspectEnum))){
+        foreach(AspectStatEnum ae in System.Enum.GetValues(typeof(AspectStatEnum))){
             aspect[ae] = s.aspectStats[ae] * multiplier;
         }
 

@@ -8,15 +8,18 @@
 	dexterity,
 }
 
-public enum AspectEnum {
+// AspectStatEnum's deal with character descriptions, and aid
+public enum AspectStatEnum {
 	movement_speed,
 	max_health,
 	max_stamina,
 	max_mana,
 	dodge,
-	armour,
+	healing,
+	aid_consumables,
 }
 
+// CombatStatEnum's deal with damage and resistance
 public enum CombatStatEnum{
 	fire,
 	ice,
@@ -28,7 +31,6 @@ public enum CombatStatEnum{
 	normal,
 	stamina,
 	mana,
-	healing,
 }
 
 public enum EffectTypeEnum{
@@ -50,7 +52,7 @@ public enum TickDamageRateEnum{
 	veryFast_tenTimesPerSecond = 10,
 }
 
-public enum AidEnum{
+public enum VitalsEnum{
 	health,
 	stamina,
 	mana,

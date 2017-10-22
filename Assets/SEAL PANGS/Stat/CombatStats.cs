@@ -15,8 +15,7 @@ public class CombatStats : IMultipliable{
 	piercing,
 	normal,
 	stamina,
-	mana,
-	healing;
+	mana;
 
 
 	public CombatStats(){
@@ -30,12 +29,11 @@ public class CombatStats : IMultipliable{
 		normal = 0;
 		stamina = 0;
 		mana = 0;
-		healing = 0;
 	}
 
 	public CombatStats(float fire, float ice, float lightning, float bleeding,
 						float blunt, float sharp, float piercing, float normal,
-						float stamina, float mana, float healing){
+						float stamina, float mana){
 		this.fire = fire;
 		this.ice = ice;
 		this.lightning = lightning;
@@ -46,12 +44,11 @@ public class CombatStats : IMultipliable{
 		this.normal = normal;
 		this.stamina = stamina;
 		this.mana = mana;
-		this.healing = healing;
 	}
 
 	public CombatStats Clone(){
 		return new CombatStats(fire, ice, lightning, bleeding, blunt,
-								sharp, piercing, normal, stamina, mana, healing);
+								sharp, piercing, normal, stamina, mana);
 	}
 
 	public void Clamp(){
@@ -89,8 +86,6 @@ public class CombatStats : IMultipliable{
 					return stamina;
 				case CombatStatEnum.mana:
 					return mana;
-				case CombatStatEnum.healing:
-					return healing;
 			}
 			return 0;
 		}
@@ -126,9 +121,6 @@ public class CombatStats : IMultipliable{
 					break;
 				case CombatStatEnum.mana:
 					mana = value;
-					break;
-				case CombatStatEnum.healing:
-					healing = value;
 					break;
 			}
 		}

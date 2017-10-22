@@ -18,7 +18,7 @@ public abstract class AbstractEffect {
 		return attributes[ae];
 	}
 
-	public float AspectValue(AspectEnum ae){
+	public float AspectValue(AspectStatEnum ae){
 		return stats.AspectValue(ae);
 	}
 
@@ -30,7 +30,7 @@ public abstract class AbstractEffect {
 		return stats.ResistanceValue(combatStatEnum);
 	}
 
-	public float PercentAspectValue(AspectEnum ae){
+	public float PercentAspectValue(AspectStatEnum ae){
 		return percentStats.AspectValue(ae);
 	}
 

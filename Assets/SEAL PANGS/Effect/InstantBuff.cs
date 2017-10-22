@@ -6,7 +6,7 @@ public class InstantBuff : AbstractEffect {
 	protected Aid aid;
 
 
-	public float AidValue(AidEnum ae){
+	public float AidValue(VitalsEnum ae){
 		return aid[ae];
 	}
 

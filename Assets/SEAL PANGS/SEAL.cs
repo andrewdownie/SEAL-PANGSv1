@@ -48,6 +48,7 @@ public class SEAL : MonoBehaviour {
 		level.CalculateLevel();
 
 		// update attributes
+		baseAttributes.Clamp();
 		effectiveAttributes = baseAttributes + effects.CalculateAttributes(); 
 		effectiveAttributes.Clamp();
 
